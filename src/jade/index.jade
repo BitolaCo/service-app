@@ -1,0 +1,53 @@
+extends ./layouts/default.jade
+
+block title
+    title Hello World!
+
+block content
+    md-subhead.md-primary Home
+    md-list(layout='column')
+        md-item
+            md-item-content
+                .md-tile-left
+                    md-button.md-fab.md-primary
+                        span.fa.fa-calendar
+                .md-tile-content
+                    h3 Calendar
+                    h4 Service Planning
+                    p Plan and record your activity.
+        md-item
+            md-item-content
+                .md-tile-left
+                    md-button.md-fab.md-primary
+                        span.fa.fa-pie-chart
+                .md-tile-content
+                    h3 Reports
+                    h4 Monthly Report Totals
+                    p View and adjust monthly reports.
+        md-item
+            md-item-content
+                .md-tile-left
+                    md-button.md-fab.md-primary
+                        span.fa.fa-users
+                .md-tile-content
+                    h3 Return Visits
+                    h4 Review, edit, create.
+                    p Add, update, and review return visits.
+        md-item
+            md-item-content
+                .md-tile-left
+                    md-button.md-fab.md-primary
+                        span.fa.fa-pencil
+                .md-tile-content
+                    h3 Record Keeping
+                    h4 House-to-house Records
+                    p Record and review house-to-house records.
+        md-item
+            md-item-content
+                .md-tile-left
+                    md-button.md-fab.md-primary
+                        span.fa.fa-laptop
+                .md-tile-content
+                    h3 Latest Presentations
+                    h4 Watchtower Online Library
+                    p Read the latest field minsitry presentations.
