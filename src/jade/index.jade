@@ -1,53 +1,61 @@
-extends ./layouts/default.jade
+doctype html
+html.no-js(lang='en', ng-app='ministryApp')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Ministry App Demo
+        meta(name='description', content='')
+        base(href='/')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:700,400&subset=latin,cyrillic')
+        link(rel='stylesheet', href='http://cdn.kendostatic.com/2014.3.1119/styles/kendo.common-material.min.css')
+        link(rel='stylesheet', href='http://cdn.kendostatic.com/2014.3.1119/styles/kendo.material.min.css')
+        link(rel='stylesheet', href='http://cdn.kendostatic.com/2014.3.1119/styles/kendo.material.mobile.min.css')
+        link(rel='stylesheet', href='http://cdn.kendostatic.com/2014.3.1119/styles/kendo.dataviz.material.min.css')
+        link(rel='stylesheet', href='css/app.css')
+    body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
+        section(layout='row', layout-fill, flex)
+            section(layout='column', flex, layout-fill)
+                md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left')
+                    md-toolbar
+                        h1.md-toolbar-tools
+                            div Calendar
+                            div(flex)
+                            md-button(ng-click='closeNav()')
+                                span.fa.fa-times
+                    md-content
+                        md-list
+                            md-item
+                                md-item-content
+                                    p Return Visits
+                            md-item
+                                md-item-content
+                                    p Report
+                            md-item
+                                md-item-content
+                                    p Notes
+                            md-item
+                                md-item-content
+                                    p Calenda\
+                        #calendar
+                md-content(flex, layout='column', layout-fill)
+                    md-toolbar(md-scroll-shrink)
+                        .md-toolbar-tools
+                            md-button(ng-click='toggleNav()')
+                                span.fa.fa-align-justify
+                            span App Title
+                            span(flex)
 
-block title
-    title Hello World!
-
-block content
-    md-subhead.md-primary Home
-    md-list(layout='column')
-        md-item
-            md-item-content
-                .md-tile-left
-                    md-button.md-fab.md-primary
-                        span.fa.fa-calendar
-                .md-tile-content
-                    h3 Calendar
-                    h4 Service Planning
-                    p Plan and record your activity.
-        md-item
-            md-item-content
-                .md-tile-left
-                    md-button.md-fab.md-primary
-                        span.fa.fa-pie-chart
-                .md-tile-content
-                    h3 Reports
-                    h4 Monthly Report Totals
-                    p View and adjust monthly reports.
-        md-item
-            md-item-content
-                .md-tile-left
-                    md-button.md-fab.md-primary
-                        span.fa.fa-users
-                .md-tile-content
-                    h3 Return Visits
-                    h4 Review, edit, create.
-                    p Add, update, and review return visits.
-        md-item
-            md-item-content
-                .md-tile-left
-                    md-button.md-fab.md-primary
-                        span.fa.fa-pencil
-                .md-tile-content
-                    h3 Record Keeping
-                    h4 House-to-house Records
-                    p Record and review house-to-house records.
-        md-item
-            md-item-content
-                .md-tile-left
-                    md-button.md-fab.md-primary
-                        span.fa.fa-laptop
-                .md-tile-content
-                    h3 Latest Presentations
-                    h4 Watchtower Online Library
-                    p Read the latest field minsitry presentations.
+                    md-content(ng-view, flex='100', layout, layout-fill)
+                    md-toolbar.bottom-toolbar
+                        .md-toolbar-tools
+                            md-button(flex, ng-click='go("/home")')
+                                span.fa.fa-calendar
+                            md-button(flex, ng-click='go("/calendar")')
+                                span.fa.fa-pie-chart
+                            md-button(flex, ng-click='go("/return-visits")')
+                                span.fa.fa-users
+                            md-button(flex, ng-click='go("/report")')
+                                span.fa.fa-pencil
+        // Google Analytics: change UA-XXXXX-X to be your site's ID.
+        script(src='js/app.js')

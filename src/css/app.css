@@ -7,17 +7,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto';
   font-weight: 300;
 }
 .md-tile-left {
   margin-right: 0;
-}
-.bottom-toolbar .fa,
-md-toolbar .fa {
-  font-size: 3em;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.67);
 }
 .md-fab.md-primary .fa {
   font-size: 2em;
@@ -25,4 +19,27 @@ md-toolbar .fa {
 }
 md-toolbar.md-light-green-theme {
   color: rgba(255, 255, 255, 0.95);
+}
+[ng-view] {
+  -webkit-flex: 100;
+      -ms-flex: 100;
+          flex: 100;
+}
+.k-calendar {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  border: 0;
+}
+.k-calendar td {
+  border-radius: 0;
+}
+table.k-content {
+  width: 100%;
+}
+.k-calendar .k-content th {
+  text-align: center;
+}
+md-input-group.block input {
+  width: 100%;
 }

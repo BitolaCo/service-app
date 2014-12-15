@@ -1,0 +1,40 @@
+md-content(layout='column', layout-fill)
+    md-list
+        md-item
+            md-item
+                .md-tile-content
+                    h3 {{ date|date:'longDate' }}
+        md-item
+            md-item-content(ng-swipe-left='increment("p", -1)', ng-swipe-right='increment("p", 1)')
+                .md-title-left {{ day.p }}
+                .md-tile-content
+                    h3 Hours
+        md-item
+            md-item-content(ng-swipe-left='increment("h", -1)', ng-swipe-right='increment("h", 1)')
+                .md-title-left {{ day.h }}
+                .md-tile-content
+                    h3 Hours (planned)
+        md-item
+            md-item-content(ng-swipe-left='increment("t", -1)', ng-swipe-right='increment("t", 1)')
+                .md-title-left {{ day.t }}
+                .md-tile-content
+                    h3 Tracts & Brochures
+        md-item
+            md-item-content(ng-swipe-left='increment("b", -1)', ng-swipe-right='increment("b", 1)')
+                .md-title-left {{ day.b }}
+                .md-tile-content
+                    h3 Books
+        md-item
+            md-item-content(ng-swipe-left='increment("r", -1)', ng-swipe-right='increment("r", 1)')
+                .md-title-left {{ day.r }}
+                .md-tile-content
+                    h3 Return Visits
+        md-item
+            md-item-content(ng-swipe-left='increment("s", -1)', ng-swipe-right='increment("s", 1)')
+                .md-title-left {{ day.s }}
+                .md-tile-content
+                    h3 Bible Studes
+        md-item
+            md-item-content
+                .md-tile-content
+                    md-text-float(flex, label='Notes', ng-model='day.n')

@@ -33,7 +33,7 @@ var gulp = require("gulp"),
             livereload: true,
             directoryListing: false,
             open: false,
-            fallback: "404.html"
+            fallback: "index.html"
         }
     };
 
@@ -127,6 +127,7 @@ gulp.task("css", function() {
 
 gulp.task("js:all", function() {
     var SRC = [
+            opts.path("src/components/jquery/dist/jquery.min.js"),
             opts.path("src/components/hammerjs/hammer.min.js"),
             opts.path("src/components/angular/angular.min.js"),
             opts.path("src/components/angular-route/angular-route.min.js"),
@@ -135,13 +136,14 @@ gulp.task("js:all", function() {
             opts.path("src/components/angular-touch/angular-touch.min.js"),
             opts.path("src/components/angular-aria/angular-aria.min.js"),
             opts.path("src/components/angular-material/angular-material.min.js"),
-            opts.path("src/js/**/*.js")
+            opts.path("src/js/kendo.ui.core.min.js"),
+            opts.path("src/js/app.js")
         ],
         DEST = opts.path("app/js");
 
     return gulp.src(SRC)
         .pipe(concat("app.js"))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest(DEST));
 
 });
