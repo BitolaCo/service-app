@@ -1,5 +1,5 @@
 doctype html
-html.no-js(lang='en', ng-app='ministryApp')
+html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -15,47 +15,35 @@ html.no-js(lang='en', ng-app='ministryApp')
         link(rel='stylesheet', href='css/app.css')
     body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
         section(layout='row', layout-fill, flex)
-            section(layout='column', flex, layout-fill)
-                md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left')
-                    md-toolbar
-                        h1.md-toolbar-tools
-                            div Calendar
-                            div(flex)
-                            md-button(ng-click='closeNav()')
-                                span.fa.fa-times
-                    md-content
-                        md-list
-                            md-item
-                                md-item-content
-                                    p Return Visits
-                            md-item
-                                md-item-content
-                                    p Report
-                            md-item
-                                md-item-content
-                                    p Notes
-                            md-item
-                                md-item-content
-                                    p Calenda\
-                        #calendar
-                md-content(flex, layout='column', layout-fill)
+            md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-md')")
+                md-toolbar
+                    h1.md-toolbar-tools
+                        div(ng-click='go("/")') {{ "My Planner" | translate }}
+                        div(flex)
+                        md-button(ng-click='closeNav()', hide-gt-md)
+                            span.fa.fa-times
+                md-content
+                    #calendar
+                    md-list
+                        md-item.link.padded
+                            md-item-content(ng-click='go("/return-visits")')
+                                p {{ "Return visits" | translate }}
+                        md-item.link.padded
+                            md-item-content(ng-click='go("/report")')
+                                p {{ "Report" | translate }}
+                        md-item.link.padded
+                            md-item-content(ng-click='go("/records")')
+                                p {{ "Records" | translate }}
+            md-content(flex)
+                div(layout='column', layout-fill)
                     md-toolbar(md-scroll-shrink)
                         .md-toolbar-tools
-                            md-button(ng-click='toggleNav()')
+                            md-button(ng-click='toggleNav()', hide-gt-md)
                                 span.fa.fa-align-justify
-                            span App Title
+                            span {{ "Viktorija's Planner" | translate }}
                             span(flex)
-
+                            md-button(ng-click='toggleLanguage()') {{ language }}
                     md-content(ng-view, flex='100', layout, layout-fill)
-                    md-toolbar.bottom-toolbar
-                        .md-toolbar-tools
-                            md-button(flex, ng-click='go("/home")')
-                                span.fa.fa-calendar
-                            md-button(flex, ng-click='go("/calendar")')
-                                span.fa.fa-pie-chart
-                            md-button(flex, ng-click='go("/return-visits")')
-                                span.fa.fa-users
-                            md-button(flex, ng-click='go("/report")')
-                                span.fa.fa-pencil
-        // Google Analytics: change UA-XXXXX-X to be your site's ID.
         script(src='js/app.js')
+
+

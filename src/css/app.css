@@ -1,45 +1,54 @@
-a,
-p,
-button,
-body,
-html,
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Roboto';
-  font-weight: 300;
-}
-.md-tile-left {
-  margin-right: 0;
-}
-.md-fab.md-primary .fa {
-  font-size: 2em;
-  color: rgba(255, 255, 255, 0.95);
-}
+body {
+  color: #333; }
+
 md-toolbar.md-light-green-theme {
-  color: rgba(255, 255, 255, 0.95);
-}
-[ng-view] {
-  -webkit-flex: 100;
-      -ms-flex: 100;
-          flex: 100;
-}
+  color: #fff; }
+
+.link {
+  cursor: pointer; }
+
+.k-calendar .k-footer {
+  display: none !important; }
+
 .k-calendar {
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  border: 0;
-}
-.k-calendar td {
-  border-radius: 0;
-}
-table.k-content {
-  width: 100%;
-}
-.k-calendar .k-content th {
-  text-align: center;
-}
-md-input-group.block input {
-  width: 100%;
-}
+  border: 0 !important;
+  max-width: 100%; }
+
+md-list.padded md-item md-item-content, md-item.padded md-item-content {
+  padding-left: 2em;
+  padding-right: 2em; }
+
+.k-animation-container, .k-widget, .k-widget *, .k-animation-container *, .k-widget *::before, .k-animation-container *::after, .k-block .k-header, .k-list-container {
+  box-sizing: border-box !important; }
+
+.pull-right {
+  float: right; }
+
+.hide {
+  display: none; }
+
+h3 span {
+  margin-right: 0.3em; }
+
+.show-hover {
+  display: none; }
+
+.hover .show-hover {
+  display: inline-block; }
+
+md-item {
+  display: block; }
+
+.md-tile-content h3 {
+  line-height: 2;
+  margin: 0; }
+
+.k-block, .k-header, .k-grid-header, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-button, .k-draghandle, .k-treemap-tile, html .km-pane-wrapper .k-header {
+  background: #97c95d; }
+  .k-block .k-link:hover, .k-block .k-state-selected > .k-link, .k-header .k-link:hover, .k-header .k-state-selected > .k-link, .k-grid-header .k-link:hover, .k-grid-header .k-state-selected > .k-link, .k-toolbar .k-link:hover, .k-toolbar .k-state-selected > .k-link, .k-grouping-header .k-link:hover, .k-grouping-header .k-state-selected > .k-link, .k-pager-wrap .k-link:hover, .k-pager-wrap .k-state-selected > .k-link, .k-button .k-link:hover, .k-button .k-state-selected > .k-link, .k-draghandle .k-link:hover, .k-draghandle .k-state-selected > .k-link, .k-treemap-tile .k-link:hover, .k-treemap-tile .k-state-selected > .k-link, html .km-pane-wrapper .k-header .k-link:hover, html .km-pane-wrapper .k-header .k-state-selected > .k-link {
+    background: #b0d683;
+    border-radius: 4em; }
+
+.k-state-selected > .k-link {
+  background: #8BC34A;
+  border-radius: 4em; }

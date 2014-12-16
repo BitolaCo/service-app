@@ -1,3 +1,67 @@
 body {
   color: #333;
 }
+md-toolbar.md-light-green-theme {
+  color: #fff;
+}
+
+.link {
+  cursor: pointer;
+}
+.k-calendar .k-footer {
+  display: none !important;
+}
+.k-calendar {
+  border: 0 !important;
+  max-width: 100%;
+}
+md-list.padded md-item md-item-content,
+md-item.padded md-item-content {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.k-animation-container, .k-widget, .k-widget *, .k-animation-container *, .k-widget *::before, .k-animation-container *::after, .k-block .k-header, .k-list-container {
+  box-sizing: border-box !important;
+}
+.pull-right {
+  float: right;
+}
+.hide {
+  display: none;
+}
+h3 {
+  span {
+    margin-right: .3em;
+  }
+}
+.show-hover {
+  display: none;
+}
+.hover {
+  .show-hover {
+    display: inline-block;
+  }
+}
+md-item {
+  display: block;
+}
+
+.md-tile-content h3 {
+  line-height: 2;
+  margin: 0;
+}
+
+$primary-color: #8BC34A;
+
+.k-block, .k-header, .k-grid-header, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-button, .k-draghandle, .k-treemap-tile, html .km-pane-wrapper .k-header {
+  background: lighten($primary-color, 5%);
+  .k-link:hover, .k-state-selected > .k-link {
+      background: lighten($primary-color, 15%);
+      border-radius: 4em;
+  }
+}
+.k-state-selected > .k-link {
+  background: $primary-color;
+  border-radius: 4em;
+}

@@ -1,4 +1,4 @@
-angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"])
+angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
     .config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
         $routeProvider
             .when("/home", {
@@ -17,6 +17,10 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
                 templateUrl: "views/report.html",
                 controller: "ReportCtrl"
             })
+            .when('/records', {
+                templateUrl: "views/records.html",
+                controller: "RecordsCtrl"
+            })
             .otherwise({
                 redirectTo: "/home"
             });
@@ -25,6 +29,27 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
     .run(["$rootScope", "$mdSidenav", "$window", "$location", "$log", function($rootScope, $mdSidenav, $window, $location, $log) {
 
         $rootScope.data = false;
+        $rootScope.language = $window.localStorage.getItem("user.language") || "en";
+        $rootScope.languages = [
+            {code: "en", title: "English"},
+            {code: "mk", title: "Macedonian"}
+        ];
+
+        $rootScope.toggleLanguage = function() {
+            var changed = false;
+            angular.forEach($rootScope.languages, function(lang, i) {
+                if(lang.code === $rootScope.language && ! changed) {
+                    $rootScope.language = ($rootScope.languages[i + 1] || $rootScope.languages[0]).code;
+                    changed = true;
+                }
+            });
+
+            if (changed) {
+                $window.localStorage.setItem("user.language", $rootScope.language);
+                $window.location.reload();
+            }
+
+        };
 
         $rootScope.getData = function() {
             var data = $window.localStorage.getItem("user.data") || {};
@@ -39,6 +64,7 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
         };
 
         $rootScope.go = function(str) {
+            $rootScope.closeNav();
             $location.url(str);
         };
 
@@ -46,6 +72,8 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
             $log.log("Saving", $rootScope.data);
             $window.localStorage.setItem("user.data", JSON.stringify($rootScope.data));
         };
+
+        $rootScope.$watchCollection("data", $rootScope.saveData);
 
         $rootScope.toggleNav = function() {
             $log.log("Toggle left");
@@ -82,6 +110,19 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
             $scope.day[field] += parseInt(amt);
         };
 
+        const SINGLE_DAY = 1000*60*60*24;
+        $scope.nextDay = function() {
+            $scope.goToDate(new Date($scope.date.getTime() + SINGLE_DAY));
+        };
+
+        $scope.prevDay = function() {
+            $scope.goToDate(new Date($scope.date.getTime() - SINGLE_DAY));
+        };
+
+        $scope.goToDate = function(d) {
+            $scope.go(["/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()].join("/"));
+        };
+
         (function() {
 
             var y = $routeParams.year,
@@ -107,11 +148,55 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch"]
 
         }());
 
+        $scope.$watchCollection("day", $scope.saveData);
+
+
+    }])
+    .filter("translate", ["$rootScope", function($rootScope) {
+        return function(text, lang) {
+
+            lang = lang || $rootScope.language;
+
+            var translator = {
+                "mk": {
+                    "Hours": "Sati",
+                    "Hours (planned)": "Sati (planirano)",
+                    "Tracts & brochures": "Traktati",
+                    "Return visits": "Povtorni poseti",
+                    "Books": "Knigi",
+                    "Bible studies": "Bibliski Studii",
+                    "Notes": "Beleski",
+                    "Report": "Izvestai",
+                    "My Planner": "Moj planir",
+                    "Calendar": "Kalendar",
+                    "House-to-house records": "Beleski od kuka do kuka",
+                    "Coming soon!": "Naskoro"
+                }
+            };
+
+            return translator[lang] && translator[lang][text] ? translator[lang][text] : text;
+
+        }
+    }])
+    .filter("dateLocale", ["$rootScope", "$locale", "$filter", "$log", function($rootScope, $locale, $filter, $log) {
+        return function (d, format) {
+            if($rootScope.language === "mk") {
+
+                var months = ["Januari", "Februari", "Mart", "April", "Maj", "Juni", "Juli", "Avgust", "Septemvri", "Oktomvri", "Noemvri", "Dekemvri"],
+                    days = ["Nedela", "Ponedelnik", "Vtornik", "Sreda", "Cetvrtok", "Petok", "Sabota"];
+                return days[d.getDay()] + " " + d.getDate() + " " + months[d.getMonth()] + ", " + d.getFullYear();
+            } else {
+                return $filter("date")(d, format);
+            }
+        }
     }])
     .controller('ReturnVisitCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
 
     }])
     .controller('ReportCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
+
+    }])
+    .controller('RecordsCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
 
     }])
     .controller('HomeCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
