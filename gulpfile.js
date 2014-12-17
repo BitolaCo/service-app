@@ -137,8 +137,10 @@ gulp.task("js:all", function() {
             opts.path("src/components/angular-touch/angular-touch.min.js"),
             opts.path("src/components/angular-aria/angular-aria.min.js"),
             opts.path("src/components/angular-material/angular-material.min.js"),
-            opts.path("src/js/kendo.ui.core.min.js"),
-            opts.path("src/js/app.js")
+            opts.path("src/js/add-ons/**/*.js"),
+            opts.path("src/js/app.js"),
+            opts.path("src/js/filters/**/*.js"),
+            opts.path("src/js/controllers/**/*.js")
         ],
         DEST = opts.path("app/js");
 
@@ -167,7 +169,7 @@ gulp.task("watch", ["webserver"], function () {
     gulp.watch(["src/less/**/*.less"], ["less"]);
     gulp.watch(["src/sass/**/*.scss"], ["sass"]);
     gulp.watch(["src/jade/**/*.jade"], ["jade"]);
-    gulp.watch(["src/js/app.js"], ["js:all"]);
+    gulp.watch(["src/js/app.js", "src/js/controllers/**/*.js", "src/filters/**/*.js"], ["js:all"]);
     gulp.watch(["src/img/**/*"], ["images"]);
     gulp.watch(["src/assets/**/*"], ["assets"]);
 });

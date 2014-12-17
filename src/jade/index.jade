@@ -26,11 +26,11 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
                     #calendar
                     md-list
                         md-item.link.padded
-                            md-item-content(ng-click='go("/return-visits")')
-                                p {{ "Return visits" | translate }}
-                        md-item.link.padded
                             md-item-content(ng-click='go("/report")')
                                 p {{ "Report" | translate }}
+                        md-item.link.padded
+                            md-item-content(ng-click='go("/return-visits")')
+                                p {{ "Return visits" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/records")')
                                 p {{ "Records" | translate }}

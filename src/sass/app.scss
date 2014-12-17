@@ -65,3 +65,19 @@ $primary-color: #8BC34A;
   background: $primary-color;
   border-radius: 4em;
 }
+
+.grid-icon {
+  font-size: 3rem;
+  color: #333;
+}
+
+.fixed-bottom-right {
+  position: fixed;
+  bottom: 1em;
+  right: 1em
+}
+.fixed-bottom-left {
+  position: fixed;
+  bottom: 1em;
+  left: 1em
+}

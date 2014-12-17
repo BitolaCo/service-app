@@ -1,4 +1,4 @@
-angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
+angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
     .config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
         $routeProvider
             .when("/home", {
@@ -9,15 +9,15 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch",
                 templateUrl: "views/calendar.html",
                 controller: "CalendarCtrl"
             })
-            .when('/return-visits', {
+            .when("/return-visits", {
                 templateUrl: "views/return-visits.html",
                 controller: "ReturnVisitCtrl"
             })
-            .when('/report', {
+            .when("/report/:year?/:month?", {
                 templateUrl: "views/report.html",
                 controller: "ReportCtrl"
             })
-            .when('/records', {
+            .when("/records", {
                 templateUrl: "views/records.html",
                 controller: "RecordsCtrl"
             })
@@ -77,11 +77,11 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch",
 
         $rootScope.toggleNav = function() {
             $log.log("Toggle left");
-            $mdSidenav('left').toggle();
+            $mdSidenav("left").toggle();
         };
         $rootScope.closeNav = function() {
             $log.log("Close");
-            $mdSidenav('left').close();
+            $mdSidenav("left").close();
         };
 
         var calendar = $("#calendar").kendoCalendar({
@@ -98,107 +98,5 @@ angular.module('ministryApp', ['ngMaterial', "ngRoute", "ngSanitize", "ngTouch",
         });
 
         $rootScope.getData();
-
-    }])
-    .controller('CalendarCtrl', ["$scope", "$routeParams", "$log", function($scope, $routeParams, $log) {
-
-        $scope.date = new Date($routeParams.year, $routeParams.month - 1, $routeParams.day);
-        $scope.increment = function(field, amt) {
-            if ($scope.day[field] < 1 && amt < 0) {
-                return;
-            }
-            $scope.day[field] += parseInt(amt);
-        };
-
-        const SINGLE_DAY = 1000*60*60*24;
-        $scope.nextDay = function() {
-            $scope.goToDate(new Date($scope.date.getTime() + SINGLE_DAY));
-        };
-
-        $scope.prevDay = function() {
-            $scope.goToDate(new Date($scope.date.getTime() - SINGLE_DAY));
-        };
-
-        $scope.goToDate = function(d) {
-            $scope.go(["/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()].join("/"));
-        };
-
-        (function() {
-
-            var y = $routeParams.year,
-                m = $routeParams.month,
-                d = $routeParams.day,
-                data = $scope.data;
-
-            if (! data[y]) data[y] = {};
-            if (! data[y][m]) { data[y][m] = {}; }
-            if (! data[y][m][d]) {
-                data[y][m][d] = {
-                    p: 0,
-                    h: 0,
-                    r: 0,
-                    m: 0,
-                    s: 0,
-                    n: "",
-                    t: 0,
-                    b: 0
-                };
-            }
-            $scope.day = data[y][m][d];
-
-        }());
-
-        $scope.$watchCollection("day", $scope.saveData);
-
-
-    }])
-    .filter("translate", ["$rootScope", function($rootScope) {
-        return function(text, lang) {
-
-            lang = lang || $rootScope.language;
-
-            var translator = {
-                "mk": {
-                    "Hours": "Sati",
-                    "Hours (planned)": "Sati (planirano)",
-                    "Tracts & brochures": "Traktati",
-                    "Return visits": "Povtorni poseti",
-                    "Books": "Knigi",
-                    "Bible studies": "Bibliski Studii",
-                    "Notes": "Beleski",
-                    "Report": "Izvestai",
-                    "My Planner": "Moj planir",
-                    "Calendar": "Kalendar",
-                    "House-to-house records": "Beleski od kuka do kuka",
-                    "Coming soon!": "Naskoro"
-                }
-            };
-
-            return translator[lang] && translator[lang][text] ? translator[lang][text] : text;
-
-        }
-    }])
-    .filter("dateLocale", ["$rootScope", "$locale", "$filter", "$log", function($rootScope, $locale, $filter, $log) {
-        return function (d, format) {
-            if($rootScope.language === "mk") {
-
-                var months = ["Januari", "Februari", "Mart", "April", "Maj", "Juni", "Juli", "Avgust", "Septemvri", "Oktomvri", "Noemvri", "Dekemvri"],
-                    days = ["Nedela", "Ponedelnik", "Vtornik", "Sreda", "Cetvrtok", "Petok", "Sabota"];
-                return days[d.getDay()] + " " + d.getDate() + " " + months[d.getMonth()] + ", " + d.getFullYear();
-            } else {
-                return $filter("date")(d, format);
-            }
-        }
-    }])
-    .controller('ReturnVisitCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
-
-    }])
-    .controller('ReportCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
-
-    }])
-    .controller('RecordsCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
-
-    }])
-    .controller('HomeCtrl', ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
 
     }]);
