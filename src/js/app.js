@@ -24,7 +24,6 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
             .otherwise({
                 redirectTo: "/home"
             });
-            $locationProvider.html5Mode(true);
     }])
     .run(["$rootScope", "$mdSidenav", "$window", "$location", "$log", function($rootScope, $mdSidenav, $window, $location, $log) {
 

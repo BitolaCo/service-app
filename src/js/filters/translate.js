@@ -18,7 +18,8 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
                 "House-to-house records": "Белешки од куќа до куќа",
                 "Coming soon!": "Наскоро!",
                 "Go to report": "Оди до иИзвестшај",
-                "Monthly report": "Месечен Известшај"
+                "Monthly report": "Месечен Известшај",
+                "Welcome": "Добродојдавте"
             }
         };
 

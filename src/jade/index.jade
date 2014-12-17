@@ -5,7 +5,6 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         title Ministry App Demo
         meta(name='description', content='')
-        base(href='/')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='css/app.css')
     body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
@@ -15,7 +14,7 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
                     h1.md-toolbar-tools
                         div(ng-click='go("/")') {{ "My Planner" | translate }}
                         div(flex)
-                        md-button(ng-click='closeNav()', hide-gt-md)
+                        md-button.icon(ng-click='closeNav()', hide-gt-md)
                             span.fa.fa-times
                 md-content
                     #calendar
@@ -28,17 +27,16 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
                                 p {{ "Return visits" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/records")')
-                                p {{ "Records" | translate }}
+                                p {{ "House-to-house records" | translate }}
             md-content(flex)
                 div(layout='column', layout-fill)
                     md-toolbar(md-scroll-shrink)
                         .md-toolbar-tools
-                            md-button(ng-click='toggleNav()', hide-gt-md)
-                                span.fa.fa-align-justify
+                            md-button.icon(ng-click='toggleNav()', hide-gt-md)
+                                span.fa.fa-bars
                             span {{ "Viktorija's Planner" | translate }}
                             span(flex)
-                            md-button(ng-click='toggleLanguage()') {{ language }}
+                            md-button.icon(ng-click='toggleLanguage()') {{ language }}
                     md-content(ng-view, flex='100', layout, layout-fill)
+        script(src='cordova.js')
         script(src='js/app.js')
-
-
