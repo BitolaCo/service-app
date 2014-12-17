@@ -1,12 +1,13 @@
 md-content(layout='column', layout-fill, layout-padding, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
-    .md-toolbar-tools(layout='row', layout-fill)
-        md-button(ng-click='prevMonth()')
-            span.fa.fa-caret-left
-        div(flex)
-        div {{ date|dateLocale:'MMMM yyyy' }}
-        div(flex)
-        md-button(ng-click='nextMonth()')
-            span.fa.fa-caret-right
+    md-toolbar
+        .md-toolbar-tools(layout='row', layout-fill)
+            md-button(ng-click='prevMonth()')
+                span.fa.fa-caret-left
+            div(flex)
+            div {{ date|dateLocale:'MMMM yyyy' }}
+            div(flex)
+            md-button(ng-click='nextMonth()')
+                span.fa.fa-caret-right
     md-subheader.md-primary {{ "Monthly report" | translate }}
     md-list.padded
         md-item

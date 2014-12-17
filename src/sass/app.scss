@@ -1,20 +1,30 @@
+$primary-color: #8BC34A;
+$fa-font-path: "../fonts/font-awesome";
+
+@import "_roboto";
+@import "../components/fontawesome/scss/font-awesome";
+
 body {
   color: #333;
 }
+
 md-toolbar.md-light-green-theme {
   color: #fff;
 }
 
-.link {
+a, .link {
   cursor: pointer;
 }
+
 .k-calendar .k-footer {
   display: none !important;
 }
+
 .k-calendar {
   border: 0 !important;
   max-width: 100%;
 }
+
 md-list.padded md-item md-item-content,
 md-item.padded md-item-content {
   padding-left: 2em;
@@ -24,25 +34,21 @@ md-item.padded md-item-content {
 .k-animation-container, .k-widget, .k-widget *, .k-animation-container *, .k-widget *::before, .k-animation-container *::after, .k-block .k-header, .k-list-container {
   box-sizing: border-box !important;
 }
+
 .pull-right {
   float: right;
 }
+
 .hide {
   display: none;
 }
+
 h3 {
   span {
     margin-right: .3em;
   }
 }
-.show-hover {
-  display: none;
-}
-.hover {
-  .show-hover {
-    display: inline-block;
-  }
-}
+
 md-item {
   display: block;
 }
@@ -52,32 +58,43 @@ md-item {
   margin: 0;
 }
 
-$primary-color: #8BC34A;
+.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-prev,
+.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-next,
+.k-widget.k-calendar .k-nav-fast {
+  height: 3.167em;
+  line-height: 3.167em;
+}
+.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-prev {
+  width: 3.167em;
+}
 
-.k-block, .k-header, .k-grid-header, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-button, .k-draghandle, .k-treemap-tile, html .km-pane-wrapper .k-header {
-  background: lighten($primary-color, 5%);
-  .k-link:hover, .k-state-selected > .k-link {
-      background: lighten($primary-color, 15%);
-      border-radius: 4em;
+md-toolbar.md-light-green-theme .md-button {
+  color: #fff;
+  &.icon {
+    min-width: 3.167em;
+    height: 3.167em;
+    border-radius: 3.167em;
   }
 }
+
+.k-block,
+.k-header,
+.k-grid-header,
+.k-toolbar,
+.k-grouping-header,
+.k-pager-wrap,
+.k-button,
+.k-draghandle,
+.k-treemap-tile,
+html .km-pane-wrapper .k-header {
+  background: $primary-color;
+  .k-link:hover, .k-state-selected > .k-link {
+    background: lighten($primary-color, 15%);
+    border-radius: 4em;
+  }
+}
+
 .k-state-selected > .k-link {
   background: $primary-color;
   border-radius: 4em;
-}
-
-.grid-icon {
-  font-size: 3rem;
-  color: #333;
-}
-
-.fixed-bottom-right {
-  position: fixed;
-  bottom: 1em;
-  right: 1em
-}
-.fixed-bottom-left {
-  position: fixed;
-  bottom: 1em;
-  left: 1em
 }
