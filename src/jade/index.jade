@@ -1,5 +1,5 @@
 doctype html
-html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
+html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak, manifest="manifest.appcache")
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -38,5 +38,4 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak)
                             span(flex)
                             md-button.icon(ng-click='toggleLanguage()') {{ language }}
                     md-content(ng-view, flex='100', layout, layout-fill)
-        script(src='cordova.js')
         script(src='js/app.js')
