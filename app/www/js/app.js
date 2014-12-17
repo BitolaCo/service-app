@@ -509,7 +509,7 @@ angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$f
                 var str = format;
                 str = str.replace(/MMMM/g, months[d.getMonth()]);
                 str = str.replace(/yyyy/g, d.getFullYear());
-                str = str.replace(/d/g, d.getDay());
+                str = str.replace(/d/g, d.getDate());
                 str = str.replace(/EEEE/g, days[d.getDay()]);
                 return str;
             } else {
