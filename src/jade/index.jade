@@ -12,7 +12,7 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak, manifest="mani
             md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-md')")
                 md-toolbar
                     h1.md-toolbar-tools
-                        div(ng-click='go("/")') {{ "My Planner" | translate }}
+                        div(ng-click='go("/")') {{ "Menu" | translate }}
                         div(flex)
                         md-button.icon(ng-click='closeNav()', hide-gt-md)
                             span.fa.fa-times
@@ -34,7 +34,8 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-cloak, manifest="mani
                         .md-toolbar-tools
                             md-button.icon(ng-click='toggleNav()', hide-gt-md)
                                 span.fa.fa-bars
-                            span {{ "Viktorija's Planner" | translate }}
+                            span(ng-click='toggleNav()')
+                                img(src='/img/logo.svg', alt='Ministry App')
                             span(flex)
                             md-button.icon(ng-click='toggleLanguage()') {{ language }}
                     md-content(ng-view, flex='100', layout, layout-fill)

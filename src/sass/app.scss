@@ -12,6 +12,22 @@ md-toolbar.md-light-green-theme {
   color: #fff;
 }
 
+.home-splash {
+  height: 512px;
+  width: 512px;
+  display: block;
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 100%;
+  max-height: 100%;
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 a, .link {
   cursor: pointer;
 }
@@ -64,6 +80,7 @@ md-item {
   height: 3.167em;
   line-height: 3.167em;
 }
+
 .k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-prev {
   width: 3.167em;
 }

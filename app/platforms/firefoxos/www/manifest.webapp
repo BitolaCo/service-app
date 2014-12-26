@@ -1,17 +1,20 @@
 {
+    "name": "Service Calendar",
+    "description": "An open source field service time tracking app.",
     "launch_path": "/index.html",
+    "icons": {
+        "64": "/icon/logo-64.png",
+        "128": "/icon/logo-128.png",
+        "512": "/icon/logo-512.png"
+    },
+    "developer": {
+        "name": "Bitola Software Company",
+        "url": "https://bitola.co"
+    },
+    "default_locale": "en",
+    "appcache_path": "/manifest.appcache",
     "installs_allowed_from": [
         "*"
     ],
-    "version": "0.0.1",
-    "name": "HelloCordova",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
-    "developer": {
-        "name": "Apache Cordova Team",
-        "url": "http://cordova.io"
-    },
-    "icons": {
-        "60": "/icon/icon-60.png",
-        "128": "/icon/icon-128.png"
-    }
+    "version": "0.0.1"
 }
