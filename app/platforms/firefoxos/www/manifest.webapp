@@ -3,18 +3,18 @@
     "description": "An open source field service time tracking app.",
     "launch_path": "/index.html",
     "icons": {
-        "64": "/icon/logo-64.png",
-        "128": "/icon/logo-128.png",
-        "512": "/icon/logo-512.png"
+        "64": "/icon/icon-64.png",
+        "128": "/icon/icon-128.png",
+        "256": "/icon/icon-256.png",
+        "512": "/icon/icon-512.png"
     },
     "developer": {
         "name": "Bitola Software Company",
         "url": "https://bitola.co"
     },
     "default_locale": "en",
-    "appcache_path": "/manifest.appcache",
     "installs_allowed_from": [
         "*"
     ],
-    "version": "0.0.1"
+    "version": "0.1.0"
 }

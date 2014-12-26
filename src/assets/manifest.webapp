@@ -1,0 +1,17 @@
+{
+    "name": "Service Calendar",
+    "description": "An open source field service time tracking app.",
+    "launch_path": "/index.html",
+    "icons": {
+        "64": "/img/icon-64.png",
+        "128": "/img/icon-128.png",
+        "256": "/img/icon-256.png",
+        "512": "/img/icon-512.png"
+    },
+    "developer": {
+        "name": "Bitola Software Company",
+        "url": "https://bitola.co"
+    },
+    "default_locale": "en",
+    "type": "privileged"
+}

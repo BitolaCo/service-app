@@ -8,6 +8,7 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
                 "Hours": "Сати",
                 "Hours (planned)": "Сати (планирани)",
                 "Tracts & brochures": "Трактати",
+                "Magazines": "Списанија",
                 "Return visits": "Повторни постеи",
                 "Books": "Книги",
                 "Bible studies": "Библиски студии",

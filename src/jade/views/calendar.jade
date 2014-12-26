@@ -35,6 +35,17 @@ md-content(layout='column', layout-fill, layout-padding)
                             md-button(ng-click='increment("p", 1)')
                                 span.fa.fa-plus
             md-item
+                md-item-content(ng-swipe-left='increment("m", -1)', ng-swipe-right='increment("m", 1)')
+                    .md-tile-left {{ day.m }}
+                    .md-tile-content(layout='row')
+                        h3 {{ "Magazines" | translate }}
+                        div(flex)
+                        div(hide-lt-md)
+                            md-button(ng-show='day.m', ng-click='increment("m", -1)')
+                                span.fa.fa-minus.link
+                            md-button(ng-click='increment("m", 1)')
+                                span.fa.fa-plus.link
+            md-item
                 md-item-content(ng-swipe-left='increment("t", -1)', ng-swipe-right='increment("t", 1)')
                     .md-tile-left {{ day.t }}
                     .md-tile-content(layout='row')
@@ -45,7 +56,6 @@ md-content(layout='column', layout-fill, layout-padding)
                                 span.fa.fa-minus.link
                             md-button(ng-click='increment("t", 1)')
                                 span.fa.fa-plus.link
-
             md-item
                 md-item-content(ng-swipe-left='increment("b", -1)', ng-swipe-right='increment("b", 1)')
                     .md-tile-left {{ day.b }}

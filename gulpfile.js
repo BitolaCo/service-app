@@ -110,6 +110,7 @@ gulp.task("css", function() {
 
     var SRC = [
             opts.path("src/components/fontawesome/css/font-awesome.min.css"),
+            opts.path("src/components/angular/angular-csp.css"),
             opts.path("src/components/angular-material/angular-material.css"),
             opts.path("src/components/angular-material/themes/light-green-theme.css"),
             opts.path("src/css/add-ons/*.css"),
