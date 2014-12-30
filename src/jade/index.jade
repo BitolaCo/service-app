@@ -10,11 +10,11 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
     body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
         section(layout='row', layout-fill, flex)
             md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-md')")
-                md-toolbar
+                md-toolbar(hide-gt-md)
                     h1.md-toolbar-tools
-                        div(ng-click='go("/")', hide-gt-md) {{ "Menu" | translate }}
+                        div(ng-click='go("/")') {{ "Menu" | translate }}
                         div(flex)
-                        md-button.icon(ng-click='closeNav()', hide-gt-md)
+                        md-button.icon(ng-click='closeNav()')
                             span.fa.fa-times
                 md-content
                     #calendar
