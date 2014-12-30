@@ -13,19 +13,15 @@ md-toolbar.md-light-green-theme {
 }
 
 .home-splash {
-  height: 512px;
-  width: 512px;
+
+  height: 100%;
+  width: 100%;
   display: block;
   margin: 0 auto;
   padding: 2em;
   max-width: 100%;
   max-height: 100%;
 
-  img {
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
 }
 
 a, .link {
@@ -91,6 +87,14 @@ md-toolbar.md-light-green-theme .md-button {
     min-width: 3.167em;
     height: 3.167em;
     border-radius: 3.167em;
+  }
+}
+
+md-toolbar, .md-toolbar-tools {
+  .md-button {
+    img {
+      max-height: 100% !important;
+    }
   }
 }
 
