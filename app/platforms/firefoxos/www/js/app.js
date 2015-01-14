@@ -440,12 +440,10 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
                     changed = true;
                 }
             });
-
             if (changed) {
                 $window.localStorage.setItem("user.language", $rootScope.language);
                 $window.location.reload();
             }
-
         };
 
         $rootScope.getData = function() {
@@ -543,7 +541,9 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
                 "Coming soon!": "Наскоро!",
                 "Go to report": "Оди до иИзвестшај",
                 "Monthly report": "Месечен Известшај",
-                "Welcome": "Добродојдавте"
+                "Welcome": "Добродојдавте",
+                "Menu": "Мени",
+                "Click the menu button to start": "Кликнете се на менито да почнете"
             }
         };
 

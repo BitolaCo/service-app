@@ -6,10 +6,11 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
         title Ministry App Demo
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='icon', href='img/logo.svg', sizes='any')
         link(rel='stylesheet', href='css/app.css')
     body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
         section(layout='row', layout-fill, flex)
-            md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-md')")
+            md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-sm')")
                 md-toolbar(hide-gt-md)
                     h1.md-toolbar-tools
                         div(ng-click='go("/")') {{ "Menu" | translate }}
@@ -30,14 +31,14 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
                                 p {{ "House-to-house records" | translate }}
             md-content(flex)
                 div(layout='column', layout-fill)
-                    md-toolbar(md-scroll-shrink)
+                    md-toolbar.main-nav(md-scroll-shrink)
                         .md-toolbar-tools
-                            md-button.icon(ng-click='toggleNav()', hide-gt-md)
+                            md-button.icon(ng-click='toggleNav()', hide-gt-sm)
                                 i.fa.fa-bars
-                            md-button.icon(ng-click='go("/")')
+                            md-button(flex, ng-click='go("/")', hide-gt-sm) Service App
+                            md-button.icon.text-left(flex, ng-click='go("/")', hide-sm)
                                 img(src='/img/logo.svg', alt='Ministry App')
-                            md-button(ng-click='go("/")') Service App
-                            span(flex)
+                                div.app-title Service App
                             md-button.icon(ng-click='toggleLanguage()') {{ language }}
                     md-content(ng-view, flex='100', layout, layout-fill)
         script(src='js/app.js')

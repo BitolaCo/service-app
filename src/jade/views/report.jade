@@ -1,11 +1,9 @@
 md-content(layout='column', layout-fill, layout-padding, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
-    md-toolbar
+    md-toolbar.nav-submenu
         .md-toolbar-tools(layout='row', layout-fill)
             md-button(ng-click='prevMonth()')
                 span.fa.fa-caret-left
-            div(flex)
-            div {{ date|dateLocale:'MMMM yyyy' }}
-            div(flex)
+            div.report-label(flex) {{ date|dateLocale:'MMMM yyyy' }}
             md-button(ng-click='nextMonth()')
                 span.fa.fa-caret-right
     md-subheader.md-primary {{ "Monthly report" | translate }}
@@ -14,29 +12,29 @@ md-content(layout='column', layout-fill, layout-padding, ng-swipe-left='nextMont
             md-item-content
                 .md-tile-left {{ month.h }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Hours" | translate:lang }}
+                    div {{ "Hours" | translate:lang }}
         md-item
             md-item-content
                 .md-tile-left {{ month.p }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Hours (planned)" | translate:lang }}
+                    div {{ "Hours (planned)" | translate:lang }}
         md-item
             md-item-content
                 .md-tile-left {{ month.t }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Tracts & brochures" | translate }}
+                    div {{ "Tracts & brochures" | translate }}
         md-item
             md-item-content
                 .md-tile-left {{ month.b }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Books" | translate }}
+                    div {{ "Books" | translate }}
         md-item
             md-item-content
                 .md-tile-left {{ month.r }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Return visits" | translate }}
+                    div {{ "Return visits" | translate }}
         md-item
             md-item-content
                 .md-tile-left {{ month.s }}
                 .md-tile-content(layout='row')
-                    h3 {{ "Bible studies" | translate }}
+                    div {{ "Bible studies" | translate }}

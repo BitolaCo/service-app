@@ -6,7 +6,59 @@ $fa-font-path: "../fonts/font-awesome";
 
 body {
   color: #333;
-  padding-top: 64px;
+}
+
+.md-tile-content, md-input-group {
+  &, input {
+    max-width: 100%;
+  }
+}
+
+.md-tile-left {
+  min-width: 36px;
+}
+.md-tile-content {
+  padding-left: 24px;
+  padding-right: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.nav-submenu {
+  button {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.report-label {
+  font-size: small;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+md-sidenav {
+  &.md-sidenav-left, &.md-sidenav-right {
+    max-width: 95%;
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+
+md-toolbar {
+  &.main-nav, .md-toolbar-tools {
+    button, .md-button {
+      height: 100%;
+      text-overflow: ellipsis;
+      min-width: 48px;
+    }
+  }
 }
 
 md-toolbar.md-light-green-theme {
@@ -14,7 +66,6 @@ md-toolbar.md-light-green-theme {
 }
 
 .home-splash {
-
   height: 100%;
   width: 100%;
   display: block;
@@ -22,7 +73,6 @@ md-toolbar.md-light-green-theme {
   padding: 2em;
   max-width: 100%;
   max-height: 100%;
-
 }
 
 a, .link {
@@ -88,6 +138,14 @@ md-toolbar.md-light-green-theme .md-button {
     min-width: 3.167em;
     height: 3.167em;
     border-radius: 3.167em;
+    .app-title {
+      position: relative;
+      top: -0.5em;
+      line-height: 2.33;
+      height: 100%;
+      display: inline-block;
+      left: 1em;
+    }
   }
 }
 

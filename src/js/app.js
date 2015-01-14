@@ -42,12 +42,10 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
                     changed = true;
                 }
             });
-
             if (changed) {
                 $window.localStorage.setItem("user.language", $rootScope.language);
                 $window.location.reload();
             }
-
         };
 
         $rootScope.getData = function() {
