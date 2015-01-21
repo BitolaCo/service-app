@@ -1,5 +1,5 @@
 {
-    "name": "Service Calendar",
+    "name": "Service",
     "description": "An open source field service time tracking app.",
     "launch_path": "/index.html",
     "icons": {
@@ -9,12 +9,12 @@
         "512": "/icon/icon-512.png"
     },
     "developer": {
-        "name": "Bitola Software Company",
+        "name": "Bitola Software Co.",
         "url": "https://bitola.co"
     },
     "default_locale": "en",
     "installs_allowed_from": [
         "*"
     ],
-    "version": "0.1.2"
+    "version": "0.1.3"
 }

@@ -1610,7 +1610,7 @@
 .fa-meanpath:before {
   content: "\f20c"; }
 
-body {
+body, button {
   color: #333; }
 
 .md-tile-content, .md-tile-content input, md-input-group, md-input-group input {
@@ -1649,7 +1649,8 @@ md-toolbar.main-nav button, md-toolbar.main-nav .md-button, md-toolbar .md-toolb
   min-width: 48px; }
 
 md-toolbar.md-light-green-theme {
-  color: #fff; }
+  color: #fff;
+  background: #8BC34A; }
 
 .home-splash {
   height: 100%;

@@ -4,7 +4,7 @@ $fa-font-path: "../fonts/font-awesome";
 @import "_roboto";
 @import "../components/fontawesome/scss/font-awesome";
 
-body {
+body, button {
   color: #333;
 }
 
@@ -47,7 +47,8 @@ md-sidenav {
   &.md-sidenav-left, &.md-sidenav-right {
     max-width: 95%;
     max-height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 
@@ -63,6 +64,7 @@ md-toolbar {
 
 md-toolbar.md-light-green-theme {
   color: #fff;
+  background: $primary-color;
 }
 
 .home-splash {
