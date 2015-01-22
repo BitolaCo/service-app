@@ -662,11 +662,7 @@ function(){"use strict";function e(e){function t(t,n,r,o,a){function i(){n.attr(
 angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
     .config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
         $routeProvider
-            .when("/home", {
-                templateUrl: "views/home.html",
-                controller: "HomeCtrl"
-            })
-            .when("/calendar/:year/:month/:day", {
+            .when("/calendar/:year?/:month?/:day?", {
                 templateUrl: "views/calendar.html",
                 controller: "CalendarCtrl"
             })
@@ -683,7 +679,7 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
                 controller: "RecordsCtrl"
             })
             .otherwise({
-                redirectTo: "/home"
+                redirectTo: "/calendar"
             });
     }])
     .run(["$rootScope", "$mdSidenav", "$window", "$location", "$log", function($rootScope, $mdSidenav, $window, $location, $log) {
@@ -742,19 +738,6 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
             $mdSidenav("left").close();
         };
 
-        var calendar = $("#calendar").kendoCalendar({
-            change: function() {
-                var d = this.value();
-                $rootScope.$apply(function() {
-                    var url = [
-                        "/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()
-                    ].join("/");
-                    $log.log(url);
-                    $rootScope.go(url);
-                });
-            }
-        });
-
         $rootScope.getData();
 
     }]);
@@ -802,11 +785,16 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
                 "Calendar": "Календар",
                 "House-to-house records": "Белешки од куќа до куќа",
                 "Coming soon!": "Наскоро!",
-                "Go to report": "Оди до иИзвестшај",
+                "Go to report": "Оди до известшај",
                 "Monthly report": "Месечен Известшај",
                 "Welcome": "Добродојдавте",
                 "Menu": "Мени",
-                "Click the menu button to start": "Кликнете се на менито да почнете"
+                "Click the menu button to start": "Кликнете се на менито да почнете",
+                "Previous day": "Минатиот ден",
+                "Next day": "Следен ден",
+                "Select date": "Одберете датум",
+                "Service App": "Календар за Служба",
+                "Navigation": "Навигација"
             }
         };
 
@@ -814,9 +802,59 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
 
     }
 }]);
-angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParams", "$mdBottomSheet", "$log", function($scope, $routeParams, $mdBottomSheet, $log) {
+var DateSelectCtrl = function($scope, $mdDialog) {
 
-    $scope.date = new Date($routeParams.year, $routeParams.month - 1, $routeParams.day);
+    var shown = false;
+    var show = setInterval(function() {
+        if(! shown) {
+            $("#calendar").kendoCalendar({
+                change: function() {
+                    var d = this.value();
+                    $scope.$apply(function() {
+                        var url = [
+                            "/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()
+                        ].join("/");
+                        $mdDialog.hide(url);
+                    });
+                }
+            });
+            shown = true;
+        } else {
+            clearInterval(show);
+        }
+    }, 500);
+
+    $scope.hide = function() {
+        $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+    };
+
+    $scope.$on("calendar:show", function() {
+        if(! this.shown) {
+            self.bootstrap();
+            self.shown = true;
+        }
+    });
+
+};
+
+angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$mdDialog", "$mdBottomSheet", "$timeout", "$routeParams", "$log", function($scope, $mdDialog, $mdBottomSheet, $timeout, $routeParams, $log) {
+
+    var now = new Date();
+
+    $scope.date = new Date(
+        $routeParams.year || now.getFullYear(),
+        $routeParams.month ? $routeParams.month - 1 : now.getMonth(),
+        $routeParams.day || now.getDate()
+    );
+
     $scope.increment = function(field, amt) {
         if ($scope.day[field] < 1 && amt < 0) {
             return;
@@ -858,6 +896,35 @@ angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParam
         });
     };
 
+    $scope.showCalendar = function(ev) {
+
+        $mdDialog.show({
+            controller: DateSelectCtrl,
+            targetEvent: ev,
+            templateUrl: "partials/calendar.html"
+        })
+            .then(function(url) {
+                $scope.go(url);
+            }, function() {
+                $scope.alert = 'You cancelled the dialog.';
+            });
+    };
+
+    var showBottomSheetCtrl = function($scope, $mdBottomSheet) {
+        $log.log($scope);
+    };
+
+    $scope.showGridBottomSheet = function($event) {
+        $scope.alert = '';
+        $mdBottomSheet.show({
+            templateUrl: "partials/calendar-options.html",
+            controller: showBottomSheetCtrl,
+            targetEvent: $event
+        }).then(function(clickedItem) {
+            $scope.alert = clickedItem.name + ' clicked!';
+        });
+    };
+
     (function() {
 
         var y = $routeParams.year,
@@ -886,11 +953,8 @@ angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParam
     $scope.$watchCollection("day", $scope.saveData);
 
 
-}])
-angular.module("ministryApp").controller("HomeCtrl",
-    ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
+}]);
 
-    }]);
 angular.module("ministryApp").controller("RecordsCtrl", ["$scope", "$timeout", "$log", function($scope, $timeout, $log) {
 
 }])

@@ -1641,7 +1641,8 @@ body, button {
 md-sidenav.md-sidenav-left, md-sidenav.md-sidenav-right {
   max-width: 95%;
   max-height: 100%;
-  overflow: auto; }
+  overflow-y: auto;
+  overflow-x: hidden; }
 
 md-toolbar.main-nav button, md-toolbar.main-nav .md-button, md-toolbar .md-toolbar-tools button, md-toolbar .md-toolbar-tools .md-button {
   height: 100%;
@@ -1664,12 +1665,15 @@ md-toolbar.md-light-green-theme {
 a, .link {
   cursor: pointer; }
 
-.k-calendar .k-footer {
-  display: none !important; }
-
 .k-calendar {
   border: 0 !important;
   max-width: 100%; }
+  .k-calendar .k-footer {
+    display: none !important; }
+  .k-calendar th, .k-calendar td {
+    text-align: center; }
+  .k-calendar .k-state-hover, .k-calendar .k-state-hover:hover {
+    border-radius: 0 !important; }
 
 md-list.padded md-item md-item-content, md-item.padded md-item-content {
   padding-left: 2em;
@@ -1722,8 +1726,23 @@ md-toolbar .md-button img, .md-toolbar-tools .md-button img {
   background: #8BC34A; }
   .k-block .k-link:hover, .k-block .k-state-selected > .k-link, .k-header .k-link:hover, .k-header .k-state-selected > .k-link, .k-grid-header .k-link:hover, .k-grid-header .k-state-selected > .k-link, .k-toolbar .k-link:hover, .k-toolbar .k-state-selected > .k-link, .k-grouping-header .k-link:hover, .k-grouping-header .k-state-selected > .k-link, .k-pager-wrap .k-link:hover, .k-pager-wrap .k-state-selected > .k-link, .k-button .k-link:hover, .k-button .k-state-selected > .k-link, .k-draghandle .k-link:hover, .k-draghandle .k-state-selected > .k-link, .k-treemap-tile .k-link:hover, .k-treemap-tile .k-state-selected > .k-link, html .km-pane-wrapper .k-header .k-link:hover, html .km-pane-wrapper .k-header .k-state-selected > .k-link {
     background: #b0d683;
-    border-radius: 4em; }
+    border-radius: 12px; }
 
 .k-state-selected > .k-link {
   background: #8BC34A;
   border-radius: 4em; }
+
+.md-dialog-container {
+  background: rgba(0, 0, 0, 0.5); }
+
+md-dialog.calendar {
+  max-width: 90%;
+  min-width: 0;
+  max-height: 90%;
+  overflow-y: auto; }
+  md-dialog.calendar md-content {
+    padding: 0; }
+
+md-tooltip.md-show {
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }

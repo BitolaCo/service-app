@@ -3,23 +3,25 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Ministry App Demo
+        title {{ "Service App" | translate }}
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='icon', href='img/logo.svg', sizes='any')
         link(rel='stylesheet', href='css/app.css')
-    body(layout='column', layout-fill, md-theme="light-green", ng-controller='HomeCtrl')
+    body(layout='column', layout-fill, md-theme="light-green")
         section(layout='row', layout-fill, flex)
             md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-sm')")
-                md-toolbar(hide-gt-md)
+                md-toolbar
                     h1.md-toolbar-tools
-                        div(ng-click='go("/")') {{ "Menu" | translate }}
+                        div(ng-click='go("/")') {{ "Navigation" | translate }}
                         div(flex)
-                        md-button.icon(ng-click='closeNav()')
+                        md-button.icon(hide-gt-md, ng-click='closeNav()')
                             span.fa.fa-times
                 md-content
-                    #calendar
                     md-list
+                        md-item.link.padded
+                            md-item-content(ng-click='go("/calendar")')
+                                p {{ "Calendar" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/report")')
                                 p {{ "Report" | translate }}
@@ -35,10 +37,11 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
                         .md-toolbar-tools
                             md-button.icon(ng-click='toggleNav()', hide-gt-sm)
                                 i.fa.fa-bars
-                            md-button(flex, ng-click='go("/")', hide-gt-sm) Service App
+                            md-button(flex, ng-click='go("/")', hide-gt-sm) {{ "Service App" | translate }}
                             md-button.icon.text-left(flex, ng-click='go("/")', hide-sm)
-                                img(src='/img/logo.svg', alt='Ministry App')
-                                div.app-title Service App
+                                img(src='/img/logo.svg', alt='Service Calendar')
+                                div.app-title {{ "Service App" | translate }}
                             md-button.icon(ng-click='toggleLanguage()') {{ language }}
+                                md-tooltip {{ "Change language" | translate }}
                     md-content(ng-view, flex='100', layout, layout-fill)
         script(src='js/app.js')

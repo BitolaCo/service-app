@@ -17,6 +17,7 @@ body, button {
 .md-tile-left {
   min-width: 36px;
 }
+
 .md-tile-content {
   padding-left: 24px;
   padding-right: 0;
@@ -81,13 +82,23 @@ a, .link {
   cursor: pointer;
 }
 
-.k-calendar .k-footer {
-  display: none !important;
-}
-
 .k-calendar {
+
   border: 0 !important;
   max-width: 100%;
+
+  .k-footer {
+    display: none !important;
+  }
+
+  th, td {
+    text-align: center;
+  }
+
+  .k-state-hover, .k-state-hover:hover {
+    border-radius: 0 !important;
+  }
+
 }
 
 md-list.padded md-item md-item-content,
@@ -172,11 +183,31 @@ html .km-pane-wrapper .k-header {
   background: $primary-color;
   .k-link:hover, .k-state-selected > .k-link {
     background: lighten($primary-color, 15%);
-    border-radius: 4em;
+    border-radius: 12px;
   }
 }
 
 .k-state-selected > .k-link {
   background: $primary-color;
   border-radius: 4em;
+}
+
+.md-dialog-container {
+  background: rgba(0, 0, 0, .5);
+}
+
+md-dialog.calendar {
+  max-width: 90%;
+  min-width: 0;
+  max-height: 90%;
+  overflow-y: auto;
+
+  md-content {
+    padding: 0;
+  }
+}
+
+md-tooltip.md-show {
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }

@@ -1,6 +1,56 @@
-angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParams", "$mdBottomSheet", "$log", function($scope, $routeParams, $mdBottomSheet, $log) {
+var DateSelectCtrl = function($scope, $mdDialog) {
 
-    $scope.date = new Date($routeParams.year, $routeParams.month - 1, $routeParams.day);
+    var shown = false;
+    var show = setInterval(function() {
+        if(! shown) {
+            $("#calendar").kendoCalendar({
+                change: function() {
+                    var d = this.value();
+                    $scope.$apply(function() {
+                        var url = [
+                            "/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()
+                        ].join("/");
+                        $mdDialog.hide(url);
+                    });
+                }
+            });
+            shown = true;
+        } else {
+            clearInterval(show);
+        }
+    }, 500);
+
+    $scope.hide = function() {
+        $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+    };
+
+    $scope.$on("calendar:show", function() {
+        if(! this.shown) {
+            self.bootstrap();
+            self.shown = true;
+        }
+    });
+
+};
+
+angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$mdDialog", "$mdBottomSheet", "$timeout", "$routeParams", "$log", function($scope, $mdDialog, $mdBottomSheet, $timeout, $routeParams, $log) {
+
+    var now = new Date();
+
+    $scope.date = new Date(
+        $routeParams.year || now.getFullYear(),
+        $routeParams.month ? $routeParams.month - 1 : now.getMonth(),
+        $routeParams.day || now.getDate()
+    );
+
     $scope.increment = function(field, amt) {
         if ($scope.day[field] < 1 && amt < 0) {
             return;
@@ -42,6 +92,35 @@ angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParam
         });
     };
 
+    $scope.showCalendar = function(ev) {
+
+        $mdDialog.show({
+            controller: DateSelectCtrl,
+            targetEvent: ev,
+            templateUrl: "partials/calendar.html"
+        })
+            .then(function(url) {
+                $scope.go(url);
+            }, function() {
+                $scope.alert = 'You cancelled the dialog.';
+            });
+    };
+
+    var showBottomSheetCtrl = function($scope, $mdBottomSheet) {
+        $log.log($scope);
+    };
+
+    $scope.showGridBottomSheet = function($event) {
+        $scope.alert = '';
+        $mdBottomSheet.show({
+            templateUrl: "partials/calendar-options.html",
+            controller: showBottomSheetCtrl,
+            targetEvent: $event
+        }).then(function(clickedItem) {
+            $scope.alert = clickedItem.name + ' clicked!';
+        });
+    };
+
     (function() {
 
         var y = $routeParams.year,
@@ -70,4 +149,4 @@ angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$routeParam
     $scope.$watchCollection("day", $scope.saveData);
 
 
-}])
+}]);

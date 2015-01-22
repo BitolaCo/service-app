@@ -1,11 +1,7 @@
 angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
     .config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
         $routeProvider
-            .when("/home", {
-                templateUrl: "views/home.html",
-                controller: "HomeCtrl"
-            })
-            .when("/calendar/:year/:month/:day", {
+            .when("/calendar/:year?/:month?/:day?", {
                 templateUrl: "views/calendar.html",
                 controller: "CalendarCtrl"
             })
@@ -22,7 +18,7 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
                 controller: "RecordsCtrl"
             })
             .otherwise({
-                redirectTo: "/home"
+                redirectTo: "/calendar"
             });
     }])
     .run(["$rootScope", "$mdSidenav", "$window", "$location", "$log", function($rootScope, $mdSidenav, $window, $location, $log) {
@@ -80,19 +76,6 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
             $log.log("Close");
             $mdSidenav("left").close();
         };
-
-        var calendar = $("#calendar").kendoCalendar({
-            change: function() {
-                var d = this.value();
-                $rootScope.$apply(function() {
-                    var url = [
-                        "/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()
-                    ].join("/");
-                    $log.log(url);
-                    $rootScope.go(url);
-                });
-            }
-        });
 
         $rootScope.getData();
 
