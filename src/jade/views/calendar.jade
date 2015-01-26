@@ -1,120 +1,39 @@
-
 md-content(layout='column', layout-fill)
     md-toolbar.nav-submenu(ng-swipe-right='prevDay()', ng-swipe-left='nextDay()')
         .md-toolbar-tools(layout='row', layout-fill)
             md-button(ng-click='prevDay()')
                 i.fa.fa-caret-left
                 md-tooltip {{ "Previous day" | translate }}
-            md-button(flex, ng-click='showCalendar()')
-                i.fa.fa-calendar(hide-gt-sm)
-                span(hide-sm) &nbsp; {{ "Select date" | translate }}
-                md-tooltip {{ "Select date" | translate }}
             md-button(flex, ng-click='goToReport()')
-                i.fa.fa-calculator(hide-gt-sm)
-                span(hide-sm) &nbsp; {{ "Go to report" | translate }}
+                span {{ "Go to report" | translate }}
                 md-tooltip {{ "Go to report" | translate }}
             md-button(ng-click='nextDay()')
                 i.fa.fa-caret-right
                 md-tooltip {{ "Next day" | translate }}
     md-subheader.md-primary(ng-swipe-right='prevDay()', ng-swipe-left='nextDay()')
         span {{ date|dateLocale:'EEEE, MMMM d, yyyy' }}
-    md-content
-        md-list.padded
-            md-item
-                md-item-content(ng-swipe-left='increment("h", -1)', ng-swipe-right='increment("h", 1)')
-                    .md-tile-left {{ day.h }}
-                    .md-tile-content(layout='row')
-                        div {{ "Hours" | translate:lang }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.h', ng-click='increment("h", -1)')
-                                span.fa.fa-minus
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("h", 1)')
-                                span.fa.fa-plus
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content(ng-swipe-left='increment("p", -1)', ng-swipe-right='increment("p", 1)')
-                    .md-tile-left {{ day.p }}
-                    .md-tile-content(layout='row')
-                        div {{ "Hours (planned)" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.p', ng-click='increment("p", -1)')
-                                span.fa.fa-minus
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("p", 1)')
-                                span.fa.fa-plus
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content(ng-swipe-left='increment("m", -1)', ng-swipe-right='increment("m", 1)')
-                    .md-tile-left {{ day.m }}
-                    .md-tile-content(layout='row')
-                        div {{ "Magazines" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.m', ng-click='increment("m", -1)')
-                                span.fa.fa-minus.link
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("m", 1)')
-                                span.fa.fa-plus.link
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content(ng-swipe-left='increment("t", -1)', ng-swipe-right='increment("t", 1)')
-                    .md-tile-left {{ day.t }}
-                    .md-tile-content(layout='row')
-                        div {{ "Tracts & brochures" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.t', ng-click='increment("t", -1)')
-                                span.fa.fa-minus.link
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("t", 1)')
-                                span.fa.fa-plus.link
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content(ng-swipe-left='increment("b", -1)', ng-swipe-right='increment("b", 1)')
-                    .md-tile-left {{ day.b }}
-                    .md-tile-content(layout='row')
-                        div {{ "Books" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.b', ng-click='increment("b", -1)')
-                                span.fa.fa-minus.link
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("b", 1)')
-                                span.fa.fa-plus.link
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content(ng-swipe-left='increment("r", -1)', ng-swipe-right='increment("r", 1)')
-                    .md-tile-left {{ day.r }}
-                    .md-tile-content(layout='row')
-                        div {{ "Return visits" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.r', ng-click='increment("r", -1)')
-                                span.fa.fa-minus.link
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("r", 1)')
-                                span.fa.fa-plus.link
-                                md-tooltip {{ "Add" | translate }}
-
-            md-item
-                md-item-content(ng-swipe-left='increment("s", -1)', ng-swipe-right='increment("s", 1)')
-                    .md-tile-left {{ day.s }}
-                    .md-tile-content(layout='row')
-                        div {{ "Bible studies" | translate }}
-                        div(flex)
-                        div(hide-sm)
-                            md-button(ng-show='day.s', ng-click='increment("s", -1)')
-                                span.fa.fa-minus.link
-                                md-tooltip {{ "Subtract" | translate }}
-                            md-button(ng-click='increment("s", 1)')
-                                span.fa.fa-plus.link
-                                md-tooltip {{ "Add" | translate }}
-            md-item
-                md-item-content
-                    div(layout='row', layout-fill)
-                        md-input-container(flex)
-                            label {{ "Notes" | translate }}
-                            textarea(ng-model='day.n')
+    md-content(layout='row', layout-padding, layout-wrap)
+            md-input-container.slider-container(flex=100)
+                label {{ day.h }} {{ "Hours" | translate:lang }}
+                md-slider.md-primary(flex, ng-model='day.h', step='.25', max='15')
+            md-input-container.slider-container(flex=100)
+                label {{ day.p }} {{ "Hours (planned)" | translate }}
+                md-slider.md-primary(flex, ng-model='day.p', step='.25', max='15')
+            md-input-container.slider-container(flex=100)
+                label {{ day.m }} {{ "Magazines" | translate }}
+                md-slider.md-primary(flex, ng-model='day.m', step='1', max='50')
+            md-input-container.slider-container(flex=100)
+                label {{ day.t }} {{ "Tracts & Brochures" | translate }}
+                md-slider.md-primary(flex, ng-model='day.t', step='1', max='50')
+            md-input-container.slider-container(flex=100)
+                label {{ day.b }} {{ "Books" | translate }}
+                md-slider.md-primary(flex, ng-model='day.b', step='1', max='20')
+            md-input-container.slider-container(flex=100)
+                label {{ day.r }} {{ "Return visits" | translate }}
+                md-slider.md-primary(flex, ng-model='day.r', step='1', max='20')
+            md-input-container.slider-container(flex=100)
+                label {{ day.s }} {{ "Bible studies" | translate }}
+                md-slider.md-primary(flex, ng-model='day.s', step='1', max='5')
+            md-input-container.slider-container(flex=100)
+                label {{ "Notes" | translate }}
+                textarea(auto-grow, ng-model='day.n')

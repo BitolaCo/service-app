@@ -196,6 +196,10 @@ html .km-pane-wrapper .k-header {
   background: rgba(0, 0, 0, .5);
 }
 
+md-content {
+  overflow-x: hidden;
+}
+
 md-dialog.calendar {
   max-width: 90%;
   min-width: 0;
@@ -210,4 +214,34 @@ md-dialog.calendar {
 md-tooltip.md-show {
   background: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+textarea[auto-grow].md-input {
+  flex: auto !important;
+  min-height: 2em;
+}
+
+.md-subheader.md-primary {
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  margin-right: 0;
+}
+
+md-slider {
+  .md-track {
+    background: #ccc;
+  }
+  .md-track.md-track-fill, .md-thumb:after {
+    background: $primary-color;
+  }
+  .md-thumb:after {
+    border-color: $primary-color;
+  }
+}
+
+.slider-container {
+  margin-bottom: 1em;
+  label {
+    padding-top: 1em;
+  }
 }

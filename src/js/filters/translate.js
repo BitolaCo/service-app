@@ -27,7 +27,8 @@ angular.module("ministryApp").filter("translate", ["$rootScope", function($rootS
                 "Next day": "Следен ден",
                 "Select date": "Одберете датум",
                 "Service App": "Календар за Служба",
-                "Navigation": "Навигација"
+                "Navigation": "Навигација",
+                "Change language": "Language - Јазик"
             }
         };
 

@@ -1,46 +1,3 @@
-var DateSelectCtrl = function($scope, $mdDialog) {
-
-    var shown = false;
-    var show = setInterval(function() {
-        if(! shown) {
-            $("#calendar").kendoCalendar({
-                change: function() {
-                    var d = this.value();
-                    $scope.$apply(function() {
-                        var url = [
-                            "/calendar", d.getFullYear(), d.getMonth() + 1, d.getDate()
-                        ].join("/");
-                        $mdDialog.hide(url);
-                    });
-                }
-            });
-            shown = true;
-        } else {
-            clearInterval(show);
-        }
-    }, 500);
-
-    $scope.hide = function() {
-        $mdDialog.hide();
-    };
-
-    $scope.cancel = function() {
-        $mdDialog.cancel();
-    };
-
-    $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
-    };
-
-    $scope.$on("calendar:show", function() {
-        if(! this.shown) {
-            self.bootstrap();
-            self.shown = true;
-        }
-    });
-
-};
-
 angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$mdDialog", "$mdBottomSheet", "$timeout", "$routeParams", "$log", function($scope, $mdDialog, $mdBottomSheet, $timeout, $routeParams, $log) {
 
     var now = new Date();
@@ -92,40 +49,11 @@ angular.module("ministryApp").controller("CalendarCtrl", ["$scope", "$mdDialog",
         });
     };
 
-    $scope.showCalendar = function(ev) {
-
-        $mdDialog.show({
-            controller: DateSelectCtrl,
-            targetEvent: ev,
-            templateUrl: "partials/calendar.html"
-        })
-            .then(function(url) {
-                $scope.go(url);
-            }, function() {
-                $scope.alert = 'You cancelled the dialog.';
-            });
-    };
-
-    var showBottomSheetCtrl = function($scope, $mdBottomSheet) {
-        $log.log($scope);
-    };
-
-    $scope.showGridBottomSheet = function($event) {
-        $scope.alert = '';
-        $mdBottomSheet.show({
-            templateUrl: "partials/calendar-options.html",
-            controller: showBottomSheetCtrl,
-            targetEvent: $event
-        }).then(function(clickedItem) {
-            $scope.alert = clickedItem.name + ' clicked!';
-        });
-    };
-
     (function() {
 
-        var y = $routeParams.year,
-            m = $routeParams.month,
-            d = $routeParams.day,
+        var y = $scope.date.getFullYear(),
+            m = $scope.date.getMonth() + 1,
+            d = $scope.date.getDay(),
             data = $scope.data;
 
         if (! data[y]) data[y] = {};

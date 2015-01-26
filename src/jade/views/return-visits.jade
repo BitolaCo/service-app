@@ -1,6 +1,29 @@
-md-content
-    md-subheader.md-primary {{ "Return visits" | translate }}
-    md-list.padded
-        md-item
-            md-item-content
-                h3 {{ "Coming soon!" | translate }}
+md-content(layout='row', layout-fill, flex=100)
+    md-sidenav.md-sidenav-right.md-whiteframe-z1(md-component-id="right")
+        md-content
+            md-subheader.md-primary {{ "Return visits" | translate }}
+            md-list.padded
+                md-item
+                    md-item-content
+                        p Name goes here
+    md-content(flex, layout='column', layout-fill)
+        md-subheader.md-primary {{ "Return visits" | translate }}
+
+        md-button.md-fab(ng-click='adding = ! adding', style='position: fixed; right: 1em; bottom: 1em;')
+            i.fa.fa-plus.fa-2x(ng-hide='adding')
+            i.fa.fa-caret-left.fa-2x(ng-show='adding')
+        md-content(ng-hide='adding')
+            md-list.padded
+                md-item
+                    md-item-content
+                        h3 {{ "Coming soon!" | translate }}
+        md-content(ng-show='adding || editing', layout='column', layout-fill, layout-padding, layout-margin)
+            md-input-container(flex)
+                label {{ "Name" | translate }}
+                input(ng-model='person.name')
+            md-input-container(flex)
+                label {{ "Address" | translate }}
+                textarea(auto-grow, ng-model='person.address')
+            md-input-container(flex)
+                label {{ "Notes" | translate }}
+                textarea(auto-grow, ng-model='person.notes')

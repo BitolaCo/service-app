@@ -7,7 +7,6 @@ angular.module("ministryApp").controller("ReportCtrl", ["$scope", "$routeParams"
 
     $scope.date = new Date(year, month - 1);
 
-
     $scope.nextMonth = function() {
         if (month === 12) {
             $scope.go(["/report", year + 1, 1].join("/"));
@@ -42,9 +41,5 @@ angular.module("ministryApp").controller("ReportCtrl", ["$scope", "$routeParams"
     };
 
     $scope.getTotals();
-
-
-
-
 
 }]);

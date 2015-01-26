@@ -5,12 +5,12 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         title {{ "Service App" | translate }}
         meta(name='description', content='')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maxium-scale=1')
         link(rel='icon', href='img/logo.svg', sizes='any')
         link(rel='stylesheet', href='css/app.css')
     body(layout='column', layout-fill, md-theme="light-green")
         section(layout='row', layout-fill, flex)
-            md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left', md-is-locked-open="$media('gt-sm')")
+            md-sidenav.md-sidenav-left.md-whiteframe-z1(md-component-id='left', md-is-locked-open="$media('gt-sm')")
                 md-toolbar
                     h1.md-toolbar-tools
                         div(ng-click='go("/")') {{ "Navigation" | translate }}
@@ -31,7 +31,10 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
                         md-item.link.padded
                             md-item-content(ng-click='go("/records")')
                                 p {{ "House-to-house records" | translate }}
-            md-content(flex)
+                        md-item.link.padded
+                            md-item-content(ng-click='changeLanguage()')
+                                p {{ "Change language" | translate }}
+            md-content(flex, layout='row')
                 div(layout='column', layout-fill)
                     md-toolbar.main-nav
                         .md-toolbar-tools
@@ -41,7 +44,8 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
                             md-button.icon.text-left(flex, ng-click='go("/")', hide-sm)
                                 img(src='/img/logo.svg', alt='Service Calendar')
                                 div.app-title {{ "Service App" | translate }}
-                            md-button.icon(ng-click='toggleLanguage()') {{ language }}
-                                md-tooltip {{ "Change language" | translate }}
-                    md-content(ng-view, flex='100', layout, layout-fill)
+                            md-button(ng-click='showCalendar()')
+                                i.fa.fa-calendar
+                                md-tooltip {{ "Select date" | translate }}
+                    md-content(ng-view, layout='row', layout-fill, flex)
         script(src='js/app.js')
