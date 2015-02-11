@@ -1,0 +1,9 @@
+md-content(layout='column', layout-fill)
+    md-subheader.md-primary {{ 'Languages' | translate }}
+    md-list.padded
+        md-item(ng-repeat='l in languages', ng-click='switchLanguage(l)')
+            md-item-content
+                p
+                    i.fa.fa-fw.fa-circle(ng-show='l.code == language')
+                    i.fa.fa-fw.fa-circle-o(ng-hide='l.code == language')
+                    | {{ l.title }}

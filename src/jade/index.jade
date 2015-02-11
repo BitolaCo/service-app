@@ -5,47 +5,56 @@ html.no-js(lang='{{ language }}', ng-app='ministryApp', ng-csp, ng-cloak)
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         title {{ "Service App" | translate }}
         meta(name='description', content='')
-        meta(name='viewport', content='width=device-width, initial-scale=1, maxium-scale=1')
+        meta(name='viewport', content='width=device-width,initial-scale=1,maximum-scale=1')
         link(rel='icon', href='img/logo.svg', sizes='any')
         link(rel='stylesheet', href='css/app.css')
-    body(layout='column', layout-fill, md-theme="light-green")
+    body(layout='column', layout-fill)
         section(layout='row', layout-fill, flex)
             md-sidenav.md-sidenav-left.md-whiteframe-z1(md-component-id='left', md-is-locked-open="$media('gt-sm')")
                 md-toolbar
                     h1.md-toolbar-tools
                         div(ng-click='go("/")') {{ "Navigation" | translate }}
                         div(flex)
-                        md-button.icon(hide-gt-md, ng-click='closeNav()')
+                        md-button.icon(hide-gt-md, ng-click='closeNav()', aria-label='Close nav')
                             span.fa.fa-times
                 md-content
                     md-list
                         md-item.link.padded
                             md-item-content(ng-click='go("/calendar")')
-                                p {{ "Calendar" | translate }}
+                                p
+                                    i.fa.fa-fw.fa-calendar
+                                    | {{ "Calendar" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/report")')
-                                p {{ "Report" | translate }}
+                                p
+                                    i.fa.fa-fw.fa-calculator
+                                    | {{ "Report" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/return-visits")')
-                                p {{ "Return visits" | translate }}
+                                p
+                                    i.fa.fa-fw.fa-users
+                                    | {{ "Return visits" | translate }}
                         md-item.link.padded
                             md-item-content(ng-click='go("/records")')
-                                p {{ "House-to-house records" | translate }}
+                                p
+                                    i.fa.fa-fw.fa-building
+                                    | {{ "House-to-house records" | translate }}
                         md-item.link.padded
-                            md-item-content(ng-click='changeLanguage()')
-                                p {{ "Change language" | translate }}
+                            md-item-content(ng-click='go("/language")')
+                                p
+                                    i.fa.fa-fw.fa-language
+                                    | {{ "Language" | translate }}
             md-content(flex, layout='row')
                 div(layout='column', layout-fill)
                     md-toolbar.main-nav
                         .md-toolbar-tools
-                            md-button.icon(ng-click='toggleNav()', hide-gt-sm)
+                            md-button.icon(ng-click='toggleNav()', hide-gt-sm, aria-label='Toggle side nav')
                                 i.fa.fa-bars
-                            md-button(flex, ng-click='go("/")', hide-gt-sm) {{ "Service App" | translate }}
-                            md-button.icon.text-left(flex, ng-click='go("/")', hide-sm)
+                            md-button(flex, ng-click='go("/")', hide-gt-sm, aria-label='Service App') {{ "Service App" | translate }}
+                            md-button.icon.text-left(flex, ng-click='go("/")', hide-sm, aria-label='Service App')
                                 img(src='/img/logo.svg', alt='Service Calendar')
                                 div.app-title {{ "Service App" | translate }}
-                            md-button(ng-click='showCalendar()')
+                            md-button(ng-click='go("/calendar")', aria-label='Calendar')
                                 i.fa.fa-calendar
-                                md-tooltip {{ "Select date" | translate }}
-                    md-content(ng-view, layout='row', layout-fill, flex)
+                    md-content(ng-view, layout='column', layout-fill, flex)
         script(src='js/app.js')

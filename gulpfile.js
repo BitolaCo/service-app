@@ -109,11 +109,8 @@ gulp.task("assets", function() {
 gulp.task("css", function() {
 
     var SRC = [
-            opts.path("src/components/fontawesome/css/font-awesome.min.css"),
             opts.path("src/components/angular/angular-csp.css"),
             opts.path("src/components/angular-material/angular-material.css"),
-            opts.path("src/components/angular-material/themes/light-green-theme.css"),
-            opts.path("src/css/add-ons/*.css"),
             opts.path("src/css/app.css")
         ],
         DEST = opts.path("app/www/css");
@@ -121,7 +118,6 @@ gulp.task("css", function() {
     return gulp.src(SRC)
         .pipe(autoprefixer(opts.autoprefixer))
         .pipe(concat("app.css"))
-        //.pipe(uncss(opts.uncss))
         .pipe(minifyCSS(opts.css))
         .pipe(gulp.dest(DEST));
 
@@ -129,8 +125,6 @@ gulp.task("css", function() {
 
 gulp.task("js:all", function() {
     var SRC = [
-            opts.path("src/components/jquery/dist/jquery.min.js"),
-            opts.path("src/components/hammerjs/hammer.min.js"),
             opts.path("src/components/angular/angular.min.js"),
             opts.path("src/components/angular-route/angular-route.min.js"),
             opts.path("src/components/angular-animate/angular-animate.min.js"),
@@ -140,6 +134,8 @@ gulp.task("js:all", function() {
             opts.path("src/components/angular-material/angular-material.min.js"),
             opts.path("src/js/add-ons/**/*.js"),
             opts.path("src/js/app.js"),
+            opts.path("src/js/directives/*.js"),
+            opts.path("src/js/services/*.js"),
             opts.path("src/js/filters/*.js"),
             opts.path("src/js/controllers/*.js")
         ],
@@ -147,7 +143,7 @@ gulp.task("js:all", function() {
 
     return gulp.src(SRC)
         .pipe(concat("app.js"))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(DEST));
 
 });
@@ -170,7 +166,7 @@ gulp.task("watch", ["webserver"], function () {
     gulp.watch(["src/less/**/*.less"], ["less"]);
     gulp.watch(["src/sass/app.scss"], ["sass"]);
     gulp.watch(["src/jade/**/*.jade"], ["jade"]);
-    gulp.watch(["src/js/app.js", "src/js/controllers/**/*.js", "src/filters/**/*.js"], ["js:all"]);
+    gulp.watch(["src/js/**/*.js"], ["js:all"]);
     gulp.watch(["src/img/**/*"], ["images"]);
     gulp.watch(["src/assets/**/*"], ["assets"]);
 });

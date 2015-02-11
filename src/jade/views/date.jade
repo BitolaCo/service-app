@@ -1,0 +1,65 @@
+md-content(layout='column', layout-fill)
+    md-toolbar.nav-submenu(ng-swipe-right='prevDay()', ng-swipe-left='nextDay()')
+        .md-toolbar-tools(layout='row', layout-fill)
+            md-button(ng-click='prevDay()', aria-label='Previous day') &laquo;
+            md-button(flex, ng-click='goToReport()', aria-label='Go to report')
+                span {{ "Go to report" | translate }}
+            md-button(ng-click='nextDay()', aria-label='Next day') &raquo;
+    md-subheader.md-primary(ng-swipe-right='nextDay()', ng-swipe-left='prevDay()')
+        span {{ date|dateLocale:'EEEE, MMMM d, yyyy' }}
+    md-content(layout='column', layout-padding, layout-wrap)
+        md-list.padded
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.h }} {{ "Hours" | translate:lang }}
+                    md-button.md-primary(ng-click='increment("h", -0.5)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("h", 0.5)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.p }} {{ "Hours (planned)" | translate }}
+                    md-button.md-primary(ng-click='increment("p", -0.5)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("p", 0.5)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.m }} {{ "Magazines" | translate }}
+                    md-button.md-primary(ng-click='increment("m", -1)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("m", 1)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.t }} {{ "Tracts & Brochures" | translate }}
+                    md-button.md-primary(ng-click='increment("t", -0.5)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("t", 1)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.b }} {{ "Books" | translate }}
+                    md-button.md-primary(ng-click='increment("b", -1)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("b", 1)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.r }} {{ "Return visits" | translate }}
+                    md-button.md-primary(ng-click='increment("r", -1)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("r", 1)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    label(flex) {{ day.s }} {{ "Bible studies" | translate }}
+                    md-button.md-primary(ng-click='increment("s", -1)', aria-label='Subtract')
+                        i.fa.fa-minus
+                    md-button.md-primary(ng-click='increment("s", 1)', aria-label='Add')
+                        i.fa.fa-plus
+            md-item
+                md-item-content(layout='row', layout-fill)
+                    md-input-container(flex)
+                        label {{ "Notes" | translate }}
+                        textarea(auto-grow, ng-model='day.n')

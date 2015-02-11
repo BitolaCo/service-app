@@ -2,7 +2,18 @@ $primary-color: #8BC34A;
 $fa-font-path: "../fonts/font-awesome";
 
 @import "_roboto";
-@import "../components/fontawesome/scss/font-awesome";
+@import "../components/fontawesome/scss/variables";
+@import "../components/fontawesome/scss/mixins";
+@import "../components/fontawesome/scss/path";
+@import "../components/fontawesome/scss/core";
+//@import "../components/fontawesome/scss/larger";
+@import "../components/fontawesome/scss/fixed-width";
+@import "../components/fontawesome/scss/list";
+//@import "bordered-pulled";
+//@import "spinning";
+//@import "rotated-flipped";
+//@import "stacked";
+@import "../components/fontawesome/scss/icons";
 
 body, button {
   color: #333;
@@ -12,6 +23,10 @@ body, button {
   &, input {
     max-width: 100%;
   }
+}
+
+.md-subheader.no-side-padding {
+  padding: 16px 0;
 }
 
 .md-tile-left {
@@ -63,10 +78,30 @@ md-toolbar {
   }
 }
 
-md-toolbar.md-light-green-theme {
+md-toolbar.md-default-theme {
   color: #fff;
   background: $primary-color;
 }
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused label {
+  color: $primary-color;
+}
+
+.md-subheader.md-primary {
+  &.md-default-theme {
+    color: #555;
+  }
+}
+
+
+.md-button {
+  min-width: 48px;
+  &.md-default-theme.md-primary {
+    color: $primary-color;
+  }
+}
+
+.md-button
 
 .home-splash {
   height: 100%;
@@ -82,37 +117,32 @@ a, .link {
   cursor: pointer;
 }
 
-.k-calendar {
-
-  border: 0 !important;
-  max-width: 100%;
-
-  .k-footer {
-    display: none !important;
-  }
-
-  th, td {
-    text-align: center;
-  }
-
-  .k-state-hover, .k-state-hover:hover {
-    border-radius: 0 !important;
-  }
-
-}
-
 md-list.padded md-item md-item-content,
 md-item.padded md-item-content {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  line-height: 2;
 }
 
-.k-animation-container, .k-widget, .k-widget *, .k-animation-container *, .k-widget *::before, .k-animation-container *::after, .k-block .k-header, .k-list-container {
-  box-sizing: border-box !important;
+.fa-fw {
+  width: 2.28571em;
+}
+
+@media (min-width: 960px) {
+  md-list.padded md-item md-item-content,
+  md-item.padded md-item-content {
+    padding-left: 2em;
+    padding-right: 2em;
+    line-height: 3;
+  }
 }
 
 .pull-right {
   float: right;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .hide {
@@ -125,6 +155,25 @@ h3 {
   }
 }
 
+.ng-calendar-day {
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.ng-calendar-day:hover {
+  background: #f0f0f0;
+}
+
+.ng-calendar-number {
+  padding: 0;
+  color: #777;
+  font-weight: bold;
+}
+
+.ng-calendar-content {
+
+}
+
 md-item {
   display: block;
 }
@@ -134,18 +183,7 @@ md-item {
   margin: 0;
 }
 
-.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-prev,
-.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-next,
-.k-widget.k-calendar .k-nav-fast {
-  height: 3.167em;
-  line-height: 3.167em;
-}
-
-.k-calendar .k-header .k-link.k-nav-next, .k-calendar .k-header .k-link.k-nav-prev {
-  width: 3.167em;
-}
-
-md-toolbar.md-light-green-theme .md-button {
+md-toolbar.md-default-theme .md-button {
   color: #fff;
   &.icon {
     min-width: 3.167em;
@@ -168,28 +206,6 @@ md-toolbar, .md-toolbar-tools {
       max-height: 100% !important;
     }
   }
-}
-
-.k-block,
-.k-header,
-.k-grid-header,
-.k-toolbar,
-.k-grouping-header,
-.k-pager-wrap,
-.k-button,
-.k-draghandle,
-.k-treemap-tile,
-html .km-pane-wrapper .k-header {
-  background: $primary-color;
-  .k-link:hover, .k-state-selected > .k-link {
-    background: lighten($primary-color, 15%);
-    border-radius: 12px;
-  }
-}
-
-.k-state-selected > .k-link {
-  background: $primary-color;
-  border-radius: 4em;
 }
 
 .md-dialog-container {

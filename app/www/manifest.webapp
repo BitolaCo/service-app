@@ -12,6 +12,16 @@
         "name": "Bitola Software Company",
         "url": "https://bitola.co"
     },
+    "locales": {
+        "en": {
+            "name": "Service",
+            "description": "An open source field service time tracking app."
+        },
+        "mk": {
+            "name": "Служба",
+            "description": "Програма за бројење месечен служба извештај"
+        }
+    },
     "default_locale": "en",
     "type": "privileged"
 }

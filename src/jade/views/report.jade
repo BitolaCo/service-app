@@ -1,40 +1,32 @@
 md-content(layout='column', layout-fill, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
     md-toolbar.nav-submenu
         .md-toolbar-tools(layout='row', layout-fill)
-            md-button(ng-click='prevMonth()')
-                span.fa.fa-caret-left
-            div.report-label(flex) {{ date|dateLocale:'MMMM yyyy' }}
-            md-button(ng-click='nextMonth()')
-                span.fa.fa-caret-right
+            md-button(ng-click='prevMonth()') &raquo;
+            h2.text-center(flex) {{ date|dateLocale:'MMMM yyyy' }}
+            md-button(ng-click='nextMonth()') &raquo;
     md-subheader.md-primary {{ "Monthly report" | translate }}
     md-list.padded
         md-item
             md-item-content
-                .md-tile-left {{ month.h }}
-                .md-tile-content(layout='row')
-                    div {{ "Hours" | translate:lang }}
+                span.fa-fw {{ month.h }}
+                | {{ "Hours" | translate:lang }}
         md-item
             md-item-content
-                .md-tile-left {{ month.p }}
-                .md-tile-content(layout='row')
-                    div {{ "Hours (planned)" | translate:lang }}
+                span.fa-fw {{ month.p }}
+                | {{ "Hours (planned)" | translate:lang }}
         md-item
             md-item-content
-                .md-tile-left {{ month.t }}
-                .md-tile-content(layout='row')
-                    div {{ "Tracts & brochures" | translate }}
+                span.fa-fw {{ month.t }}
+                | {{ "Tracts & brochures" | translate }}
         md-item
             md-item-content
-                .md-tile-left {{ month.b }}
-                .md-tile-content(layout='row')
-                    div {{ "Books" | translate }}
+                span.fa-fw {{ month.b }}
+                | {{ "Books" | translate }}
         md-item
             md-item-content
-                .md-tile-left {{ month.r }}
-                .md-tile-content(layout='row')
-                    div {{ "Return visits" | translate }}
+                span.fa-fw {{ month.r }}
+                | {{ "Return visits" | translate }}
         md-item
             md-item-content
-                .md-tile-left {{ month.s }}
-                .md-tile-content(layout='row')
-                    div {{ "Bible studies" | translate }}
+                span.fa-fw {{ month.s }}
+                | {{ "Bible studies" | translate }}

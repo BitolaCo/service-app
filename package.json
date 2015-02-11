@@ -1,14 +1,14 @@
 {
-  "name": "webproject-seed",
-  "version": "0.1.0",
-  "description": "A static html web project seed app, built with jade templates.",
+  "name": "service-app",
+  "version": "0.1.6",
+  "description": "An open source field service time tracking app.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BitolaCo/webproject-seed-jade.git"
+    "url": "https://github.com/BitolaCo/service-app.git"
   },
   "author": "Brad Berger <brad@bradb.net>",
   "license": "MPL",
