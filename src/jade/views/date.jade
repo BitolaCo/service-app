@@ -1,11 +1,11 @@
-md-content(layout='column', layout-fill)
-    md-toolbar.nav-submenu(ng-swipe-right='prevDay()', ng-swipe-left='nextDay()')
+md-content(layout='column', layout-fill, ng-swipe-left='nextDay()', ng-swipe-right='prevDay()')
+    md-toolbar.nav-submenu
         .md-toolbar-tools(layout='row', layout-fill)
             md-button(ng-click='prevDay()', aria-label='Previous day') &laquo;
             md-button(flex, ng-click='goToReport()', aria-label='Go to report')
                 span {{ "Go to report" | translate }}
             md-button(ng-click='nextDay()', aria-label='Next day') &raquo;
-    md-subheader.md-primary(ng-swipe-right='nextDay()', ng-swipe-left='prevDay()')
+    md-subheader.md-primary
         span {{ date|dateLocale:'EEEE, MMMM d, yyyy' }}
     md-content(layout='column', layout-padding, layout-wrap)
         md-list.padded

@@ -1,7 +1,7 @@
 md-content(layout='column', layout-fill, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
     md-toolbar.nav-submenu
         .md-toolbar-tools(layout='row', layout-fill)
-            md-button(ng-click='prevMonth()') &raquo;
+            md-button(ng-click='prevMonth()') &laquo;
             h2.text-center(flex) {{ date|dateLocale:'MMMM yyyy' }}
             md-button(ng-click='nextMonth()') &raquo;
     md-subheader.md-primary {{ "Monthly report" | translate }}

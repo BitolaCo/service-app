@@ -3,7 +3,7 @@ angular.module("ministryApp").service("Time", ["$window", function($window) {
     function Time() {
 
         var self = this;
-        var columns = ["h", "t", "b", "r", "s", "p"];
+        this.columns = ["h", "t", "b", "r", "s", "p"];
 
         this.data = {};
 
@@ -11,13 +11,13 @@ angular.module("ministryApp").service("Time", ["$window", function($window) {
 
             var amt, total = {};
 
-            angular.forEach(columns, function(key) {
+            angular.forEach(this.columns, function(key) {
                 total[key] = 0;
             });
 
             if (this.data[year] && this.data[year][month]) {
                 angular.forEach(this.data[year][month], function(day) {
-                    angular.forEach(columns, function(key) {
+                    angular.forEach(this.columns, function(key) {
                         amt = parseFloat(day[key]);
                         total[key] += Number.isNaN(amt) ? 0 : amt;
                     });
@@ -63,7 +63,7 @@ angular.module("ministryApp").service("Time", ["$window", function($window) {
 
             angular.forEach(data, function(val, key) {
                 val = parseFloat(val);
-                if (Number.isNaN(val)) {
+                if (Number.isNaN(val) && key.indexOf(self.columns) > -1) {
                     data[key] = 0;
                 }
             });

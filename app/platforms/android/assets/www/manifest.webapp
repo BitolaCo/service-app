@@ -8,27 +8,20 @@
         "256": "/img/icon-256.png",
         "512": "/img/icon-512.png"
     },
-    "fullscreen": true,
     "developer": {
         "name": "Bitola Software Company",
         "url": "https://bitola.co"
     },
-    "type": "privileged",
-    "permissions": {
-        "webapps-manage":{ },
-        "device-storage:videos": { "access": "readwrite" },
-        "device-storage:pictures":{ "access": "readwrite" },
-        "device-storage:sdcard": { "access": "readwrite" },
-        "device-storage:music": { "access": "readwrite" },
-        "device-storage:apps":{ "access": "readwrite" },
-        "systemXHR": {"description": "Required to sync your records across devices."},
-        "alarms": {"description": "Required to schedule your appointments."}
-    },
-    "locals": {
+    "locales": {
+        "en": {
+            "name": "Service",
+            "description": "An open source field service time tracking app."
+        },
         "mk": {
-            "name": "Служба календар",
-            "description": "Софтвер со отворен код за планирањето и евидентирање на служба"
+            "name": "Служба",
+            "description": "Програма за бројење месечен служба извештај"
         }
     },
-    "default_locale": "en"
+    "default_locale": "en",
+    "type": "privileged"
 }
