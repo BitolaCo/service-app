@@ -1,4 +1,7 @@
-angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$filter", "$log", function($rootScope, $locale, $filter, $log) {
+"use strict";
+
+angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$filter", "$log", function($rootScope, $locale, $filter) {
+
     return function (d, format) {
         if($rootScope.language === "mk") {
 
@@ -6,7 +9,7 @@ angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$f
                 days = ["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота"],
                 shortDays = ["Нед", "Пон", "Втр", "Срд", "Чет", "Пет", "Саб"];
 
-            if (format) {zxzx
+            if (format) {
                 var str = format;
                 str = str.replace(/MMMM/g, months[d.getMonth()]);
                 str = str.replace(/yyyy/g, d.getFullYear());
@@ -21,5 +24,6 @@ angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$f
         } else {
             return $filter("date")(d, format);
         }
-    }
+    };
+
 }]);

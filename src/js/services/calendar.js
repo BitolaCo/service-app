@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module("ministryApp").service("Calendar", ["$window", "$log", function($window, $log) {
 
     function Calendar(year, month) {

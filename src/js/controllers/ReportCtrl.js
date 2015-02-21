@@ -1,7 +1,9 @@
+"use strict";
+
 angular.module("ministryApp").controller("ReportCtrl", ["$scope", "$routeParams", "Time", function($scope, $routeParams, Time) {
 
-    const YEAR = parseInt($routeParams.year || (new Date()).getFullYear());
-    const MONTH = parseInt($routeParams.month || (new Date()).getMonth() + 1);
+    var YEAR = parseInt($routeParams.year || (new Date()).getFullYear());
+    var MONTH = parseInt($routeParams.month || (new Date()).getMonth() + 1);
 
     $scope.date = new Date(YEAR, MONTH - 1);
 

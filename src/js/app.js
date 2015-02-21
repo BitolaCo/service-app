@@ -1,9 +1,16 @@
+"use strict";
+
 Number.isNaN = Number.isNaN || function(value) {
     return typeof value === "number" && isNaN(value);
 };
 
-angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch", "ngLocale"])
-    .config(["$routeProvider", "$locationProvider", function($routeProvider) {
+angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch", "ngLocale", "angular.translate"])
+    .config(["$routeProvider", "$mdThemingProvider", function($routeProvider, $mdThemingProvider) {
+
+        $mdThemingProvider.theme("default")
+            .primaryPalette(window.localStorage.getItem("user.theme.primary") || "light-green")
+            .accentPalette(window.localStorage.getItem("user.theme.accent") || "orange");
+
         $routeProvider
             .when("/calendar", {
                 templateUrl: "views/calendar.html",
@@ -25,22 +32,17 @@ angular.module("ministryApp", ["ngMaterial", "ngRoute", "ngSanitize", "ngTouch",
                 templateUrl: "views/records.html",
                 controller: "RecordsCtrl"
             })
-            .when("/language", {
-                templateUrl: "views/language.html",
-                controller: "LanguageCtrl"
+            .when("/settings", {
+                templateUrl: "views/settings.html",
+                controller: "SettingsCtrl"
             })
             .otherwise({
                 redirectTo: "/calendar"
             });
     }])
-    .run(["$rootScope", "$mdSidenav", "$mdDialog", "$window", "$location", function($rootScope, $mdSidenav, $mdDialog, $window, $location) {
+    .run(["$rootScope", "$mdSidenav", "$mdDialog", "$window", "$location", "Language", function($rootScope, $mdSidenav, $mdDialog, $window, $location, Language) {
 
-        $rootScope.language = $window.localStorage.getItem("user.language") || "en";
-
-        $rootScope.languages = [
-            {code: "en", title: "English"},
-            {code: "mk", title: "Македонски"}
-        ];
+        $rootScope.language = new Language();
 
         $rootScope.go = function(str) {
             $rootScope.closeNav();

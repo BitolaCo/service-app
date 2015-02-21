@@ -1,32 +1,31 @@
+/* globals __dirname: false */
+
 "use strict";
 
-// Include Gulp & Tools We"ll Use
 var gulp = require("gulp"),
-    webserver = require('gulp-webserver'),
+    webserver = require("gulp-webserver"),
     uglify = require("gulp-uglify"),
     changed = require("gulp-changed"),
-    sourcemaps = require('gulp-sourcemaps'),
     minifyCSS = require("gulp-minify-css"),
     size = require("gulp-size"),
     concat = require("gulp-concat"),
     imagemin = require("gulp-imagemin"),
     autoprefixer = require("gulp-autoprefixer"),
     jshint = require("gulp-jshint"),
-    stylish = require("jshint-stylish"),
     jade = require("gulp-jade"),
     less = require("gulp-less"),
     sass = require("gulp-sass"),
     minifyHTML = require("gulp-minify-html"),
     glob = require("glob"),
-    uncss = require("gulp-uncss"),
-    runSequence = require('run-sequence'),
-    clean = require('gulp-clean'),
+    runSequence = require("run-sequence"),
     opts = {
-        path: function(path) { return __dirname + (path.charAt(0) === "/" ? "" : "/") + path; },
+        path: function(path) {
+            return __dirname + (path.charAt(0) === "/" ? "" : "/") + path;
+        },
         uncss: { html: glob.sync("app/www/**/*.html") },
         size: { showFiles: true, gzip: true },
-        html: { empty: true },
-        autoprefixer: { browsers: ['last 2 versions'], cascade: true },
+        html: { empty: true, quotes: true, spare: true },
+        autoprefixer: { browsers: ["last 2 versions"], cascade: true },
         css: { keepBreaks: false },
         clean: {force: true},
         webserver: {
@@ -40,7 +39,8 @@ var gulp = require("gulp"),
 gulp.task("jshint", function () {
     return gulp.src("src/js/**/*.js")
         .pipe(jshint())
-        .pipe(jshint.reporter(stylish));
+        .pipe(jshint.reporter("jshint-stylish"))
+        .pipe(jshint.reporter("fail"));
 });
 
 gulp.task("images", function () {
@@ -51,10 +51,11 @@ gulp.task("images", function () {
 });
 
 gulp.task("jade", function () {
+
     var DEST = opts.path("src/html"),
         SRC = opts.path("src/jade/**/*.jade");
+
     return gulp.src(SRC)
-        .pipe(changed(DEST, { extension: ".html" }))
         .pipe(jade())
         .pipe(size(opts.size))
         .pipe(gulp.dest(DEST));
@@ -124,22 +125,25 @@ gulp.task("css", function() {
 });
 
 gulp.task("js:all", function() {
+
     var SRC = [
-            opts.path("src/components/angular/angular.min.js"),
-            opts.path("src/components/angular-route/angular-route.min.js"),
-            opts.path("src/components/angular-animate/angular-animate.min.js"),
-            opts.path("src/components/angular-sanitize/angular-sanitize.min.js"),
-            opts.path("src/components/angular-touch/angular-touch.min.js"),
-            opts.path("src/components/angular-aria/angular-aria.min.js"),
-            opts.path("src/components/angular-material/angular-material.min.js"),
-            opts.path("src/js/add-ons/**/*.js"),
-            opts.path("src/js/app.js"),
-            opts.path("src/js/directives/*.js"),
-            opts.path("src/js/services/*.js"),
-            opts.path("src/js/filters/*.js"),
-            opts.path("src/js/controllers/*.js")
-        ],
-        DEST = opts.path("app/www/js");
+        opts.path("src/components/fastclick/lib/fastclick.js"),
+        opts.path("src/components/angular/angular.min.js"),
+        opts.path("src/components/angular-route/angular-route.min.js"),
+        opts.path("src/components/angular-animate/angular-animate.min.js"),
+        opts.path("src/components/angular-sanitize/angular-sanitize.min.js"),
+        opts.path("src/components/angular-touch/angular-touch.min.js"),
+        opts.path("src/components/angular-aria/angular-aria.min.js"),
+        opts.path("src/components/angular-material/angular-material.min.js"),
+        opts.path("src/components/angular-translatability/angular-translate.min.js"),
+        opts.path("src/js/add-ons/**/*.js"),
+        opts.path("src/js/app.js"),
+        opts.path("src/js/directives/*.js"),
+        opts.path("src/js/services/*.js"),
+        opts.path("src/js/filters/*.js"),
+        opts.path("src/js/controllers/*.js")
+    ],
+    DEST = opts.path("app/www/js");
 
     return gulp.src(SRC)
         .pipe(concat("app.js"))
@@ -149,7 +153,6 @@ gulp.task("js:all", function() {
 });
 
 gulp.task("webserver", function() {
-    console.log("Serving from " + opts.path("app/www"))
     return gulp.src(opts.path("app/www"))
         .pipe(webserver(opts.webserver));
 });

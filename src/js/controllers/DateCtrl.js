@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module("ministryApp").controller("DateCtrl", ["$scope", "$routeParams", "Time",
     function($scope, $routeParams, Time) {
 
@@ -11,10 +13,10 @@ angular.module("ministryApp").controller("DateCtrl", ["$scope", "$routeParams", 
         );
     }
 
-    const SINGLE_DAY = 1000*60*60*24;
-    const Y = $scope.date.getFullYear();
-    const M = $scope.date.getMonth() + 1;
-    const D = $scope.date.getDay();
+    var SINGLE_DAY = 1000*60*60*24;
+    var Y = $scope.date.getFullYear();
+    var M = $scope.date.getMonth() + 1;
+    var D = $scope.date.getDay();
 
     var init = function() {
         $scope.day = Time.getDay(Y, M, D);
@@ -25,16 +27,13 @@ angular.module("ministryApp").controller("DateCtrl", ["$scope", "$routeParams", 
     };
 
     $scope.increment = function(field, amt) {
-        if ($scope.day[field] < 1 && amt < 0) {
-            $scope.day[field] = 0;
-        } else {
-            amt = parseFloat(amt);
-            if (Number.isNaN(amt)) {
-                amt = 0;
-            }
-            $scope.day[field] += parseFloat(amt);
-        }
+
+        var total = ($scope.day[field] || 0) + parseFloat(amt);
+
+        $scope.day[field] = total < 0 || Number.isNaN(total) ? 0 : total;
+
         save();
+
     };
 
 

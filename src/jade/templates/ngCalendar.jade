@@ -6,7 +6,7 @@ section.ng-calendar(layout='column', layout-fill, flex)
             md-button(ng-click='next()') &raquo;
     md-subheader.md-primary.no-side-padding
         .md-subheader-content(layout='row', layout-fill)
-            div(flex, ng-repeat='day in calendar.weeks[0]')
+            .ng-calendar-subhead-day(flex, ng-repeat='day in calendar.weeks[0]')
                 span(hide-gt-md) {{ day | dateLocale:'EEE' }}
                 span(hide, show-lg, show-gt-lg) {{ day | dateLocale:'EEEE' }}
     md-content(flex, layout='column', layout-fill)

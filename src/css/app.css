@@ -1498,7 +1498,7 @@
 .fa-meanpath:before {
   content: "\f20c"; }
 
-body, button {
+body, html, button {
   color: #333; }
 
 .md-tile-content, .md-tile-content input, md-input-group, md-input-group input {
@@ -1540,20 +1540,11 @@ md-toolbar.main-nav button, md-toolbar.main-nav .md-button, md-toolbar .md-toolb
   text-overflow: ellipsis;
   min-width: 48px; }
 
-md-toolbar.md-default-theme {
-  color: #fff;
-  background: #8BC34A; }
-
-md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused label {
-  color: #8BC34A; }
-
 .md-subheader.md-primary.md-default-theme {
   color: #555; }
 
 .md-button {
   min-width: 48px; }
-  .md-button.md-default-theme.md-primary {
-    color: #8BC34A; }
 
 .md-button .home-splash {
   height: 100%;
@@ -1570,16 +1561,36 @@ a, .link {
 md-list.padded md-item md-item-content, md-item.padded md-item-content {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  line-height: 2; }
+  line-height: 2.67; }
+
+md-item-content a {
+  color: inherit;
+  text-decoration: none; }
 
 .fa-fw {
   width: 2.28571em; }
+
+.ng-calendar-number, .ng-calendar-subhead-day {
+  padding: 4px;
+  color: #777; }
+
+md-item-content a {
+  line-height: 3.67;
+  display: block;
+  width: 100%; }
 
 @media (min-width: 960px) {
   md-list.padded md-item md-item-content, md-item.padded md-item-content {
     padding-left: 2em;
     padding-right: 2em;
     line-height: 3; }
+
+  .ng-calendar-subhead-day {
+    padding-left: 12px;
+    padding-right: 12px; }
+
+  .ng-calendar-number {
+    padding: 12px; }
  }
 
 .pull-right {
@@ -1601,11 +1612,6 @@ h3 span {
 .ng-calendar-day:hover {
   background: #f0f0f0; }
 
-.ng-calendar-number {
-  padding: 0;
-  color: #777;
-  font-weight: bold; }
-
 md-item {
   display: block; }
 
@@ -1613,22 +1619,22 @@ md-item {
   line-height: 2;
   margin: 0; }
 
+.app-title img {
+  width: 2em;
+  margin-right: 0.5em;
+  vertical-align: middle; }
+
 md-toolbar.md-default-theme .md-button {
   color: #fff; }
   md-toolbar.md-default-theme .md-button.icon {
     min-width: 3.167em;
     height: 3.167em;
     border-radius: 3.167em; }
-    md-toolbar.md-default-theme .md-button.icon .app-title {
-      position: relative;
-      top: -0.5em;
-      line-height: 2.33;
-      height: 100%;
-      display: inline-block;
-      left: 1em; }
 
 md-toolbar .md-button img, .md-toolbar-tools .md-button img {
   max-height: 100% !important; }
+md-toolbar h1, md-toolbar h2, md-toolbar h3, md-toolbar h4, md-toolbar h5, md-toolbar h6, md-toolbar p, md-toolbar i, .md-toolbar-tools h1, .md-toolbar-tools h2, .md-toolbar-tools h3, .md-toolbar-tools h4, .md-toolbar-tools h5, .md-toolbar-tools h6, .md-toolbar-tools p, .md-toolbar-tools i {
+  color: #fff; }
 
 .md-dialog-container {
   background: rgba(0, 0, 0, 0.5); }
@@ -1658,13 +1664,6 @@ textarea[auto-grow].md-input {
   background: #f9f9f9;
   border-bottom: 1px solid #eee;
   margin-right: 0; }
-
-md-slider .md-track {
-  background: #ccc; }
-md-slider .md-track.md-track-fill, md-slider .md-thumb:after {
-  background: #8BC34A; }
-md-slider .md-thumb:after {
-  border-color: #8BC34A; }
 
 .slider-container {
   margin-bottom: 1em; }

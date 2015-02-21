@@ -1,9 +1,11 @@
+"use strict";
+
 angular.module("ministryApp").service("Time", ["$window", function($window) {
 
     function Time() {
 
         var self = this;
-        this.columns = ["h", "t", "b", "r", "s", "p"];
+        this.columns = ["h", "t", "m", "b", "r", "s", "p"];
 
         this.data = {};
 
@@ -11,13 +13,13 @@ angular.module("ministryApp").service("Time", ["$window", function($window) {
 
             var amt, total = {};
 
-            angular.forEach(this.columns, function(key) {
+            this.columns.forEach(function(key) {
                 total[key] = 0;
             });
 
             if (this.data[year] && this.data[year][month]) {
                 angular.forEach(this.data[year][month], function(day) {
-                    angular.forEach(this.columns, function(key) {
+                    angular.forEach(self.columns, function(key) {
                         amt = parseFloat(day[key]);
                         total[key] += Number.isNaN(amt) ? 0 : amt;
                     });
@@ -50,7 +52,7 @@ angular.module("ministryApp").service("Time", ["$window", function($window) {
 
             if (! this.data[year][month][day]) {
                 this.data[year][month][day] = {};
-                angular.forEach(this.columns, function(col) {
+                this.columns.forEach(function(col) {
                     self.data[year][month][day][col] = 0;
                 });
             }

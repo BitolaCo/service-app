@@ -1,16 +1,13 @@
-function addPersonCtrl($scope, $mdDialog) {
-
-}
+"use strict";
 
 angular.module("ministryApp").controller("ReturnVisitCtrl", ["$scope", "$window", "$mdSidenav", "$timeout", "$log", function($scope, $window, $mdSidenav, $timeout, $log) {
 
     $scope.toggleRight = function() {
-        $mdSidenav('right').toggle()
+        $mdSidenav("right").toggle()
             .then(function(){
                 $log.debug("toggle RIGHT is done");
             });
     };
-
 
     var load = function() {
 
@@ -27,10 +24,11 @@ angular.module("ministryApp").controller("ReturnVisitCtrl", ["$scope", "$window"
     };
 
     $scope.save = function() {
-       $window.localStorage.setItem("user.people", JSON.stringify($scope.people || []))
+       $window.localStorage.setItem("user.people", JSON.stringify($scope.people || []));
     };
 
-
-    $log.log($scope.data);
+    $scope.init = function() {
+        load();
+    };
 
 }]);

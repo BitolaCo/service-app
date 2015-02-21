@@ -34,7 +34,7 @@
   "evil" : false,
   "expr" : false,
   "funcscope" : false,
-  "globalstrict" : false,
+  "globalstrict" : true,
   "iterator" : false,
   "lastsemic" : false,
   "laxbreak" : false,
@@ -69,6 +69,8 @@
   "yui" : false,
   "globals" : {
     "__dirname": false,
-    "require": false
+    "require": false,
+    "angular": false,
+    "FastClick": false
   }
 }

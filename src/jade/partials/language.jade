@@ -1,8 +1,0 @@
-md-dialog.language(aria-label="Select language")
-    md-content
-        md-list
-            md-item.link.padded(ng-repeat='l in languages', ng-click='answer(l.code)')
-                md-item-content
-                    p {{ l.title }}
-    .md-actions(layout='row')
-        md-button(ng-click='cancel()') Cancel

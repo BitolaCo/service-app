@@ -1,0 +1,24 @@
+md-content(layout='column', layout-fill, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
+    md-subheader.md-primary {{ "Theme" | translate:language.translator.current }}
+    md-list.padded
+        md-item
+            md-item-content(layout='row', layout-fill)
+                div(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-paint-brush
+                    span {{ "Primary color" | translate:language.translator.current }}
+                md-select(flex, ng-model="color", placeholder="Select a color")
+                    md-option(ng-value="c", ng-repeat="c in colors") {{ c | translate:language.translator.current }}
+        md-item
+            md-item-content(layout='row', layout-fill)
+                div(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-paint-brush
+                    span {{ "Secondary color" | translate:language.translator.current }}
+                md-select(flex, ng-model="accent", placeholder="Select a color")
+                    md-option(ng-value="c", ng-repeat="c in colors") {{ c | translate:language.translator.current }}
+        md-item
+            md-item-content(layout='row', layout-fill)
+                div(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-language
+                    span {{ "Language" | translate:language.translator.current }}
+                md-select(flex, ng-model="lang", placeholder="Language")
+                    md-option(ng-value="l.code", ng-repeat="l in language.languages") {{ l.title | translate:language.translator.current }}

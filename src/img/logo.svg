@@ -3293,14 +3293,6 @@
          d="M 0,800 800,800 800,0 0,0 0,800 z"
          id="path13218-1" />
     </clipPath>
-    <filter
-       inkscape:collect="always"
-       id="filter14918">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.9955987"
-         id="feGaussianBlur14920" />
-    </filter>
     <linearGradient
        x1="0"
        y1="0"
@@ -3748,14 +3740,6 @@
          d="M 0,800 800,800 800,0 0,0 0,800 z"
          id="path20706-4-3-4-6" />
     </clipPath>
-    <filter
-       inkscape:collect="always"
-       id="filter15873">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.50398094"
-         id="feGaussianBlur15875" />
-    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -3765,9 +3749,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.5"
-     inkscape:cx="75.797278"
-     inkscape:cy="23.569823"
-     inkscape:current-layer="g15542"
+     inkscape:cx="76.160914"
+     inkscape:cy="30.84255"
+     inkscape:current-layer="g20588"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
@@ -3776,7 +3760,7 @@
      inkscape:window-width="1280"
      inkscape:window-height="776"
      inkscape:window-x="0"
-     inkscape:window-y="214"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      gridtolerance="50"
      guidetolerance="50"
@@ -3800,7 +3784,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3840,7 +3824,7 @@
                       <path
                          inkscape:connector-curvature="0"
                          d="M 0,0 -14.68,-0.433 -29.359,0 c -2.492,0.071 -6.431,0.776 -8.797,1.57 L -144,37.083 c -2.366,0.793 -4.282,-0.587 -4.282,-3.079 l 0,-168.418 c 0,-2.491 1.931,-5.111 4.315,-5.848 l 103.52,-31.962 c 2.384,-0.732 6.338,-1.332 8.831,-1.332 l 16.936,0 16.936,0 c 2.494,0 6.448,0.6 8.833,1.332 l 103.519,31.962 c 2.383,0.737 4.315,3.357 4.315,5.848 l 0,168.418 c 0,2.492 -1.916,3.872 -4.281,3.079 L 8.796,1.57 C 6.431,0.776 2.492,0.071 0,0"
-                         style="fill:#ff4600;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                         style="fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none"
                          id="path20590" />
                     </g>
                     <g

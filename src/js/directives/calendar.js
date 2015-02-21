@@ -1,10 +1,12 @@
+"use strict";
+
 angular.module("ministryApp").directive("ngCalendar", ["Calendar", "$log", function(Calendar, $log) {
 
     return {
         restrict: "E",
         replace: true,
         templateUrl: "templates/ngCalendar.html",
-        link: function($scope, $element, $attrs, $ngModel) {
+        link: function($scope, $element, $attrs) {
 
             var month = parseInt($element.data("month") || (new Date().getMonth() + 1));
             var year = parseInt($element.data("year") || (new Date().getFullYear()));
@@ -28,9 +30,9 @@ angular.module("ministryApp").directive("ngCalendar", ["Calendar", "$log", funct
                         $log.error("Date handler " + callback + " is not a function");
                     }
                 }
-            }
+            };
 
         }
-    }
+    };
 
 }]);
