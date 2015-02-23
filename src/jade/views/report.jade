@@ -8,35 +8,42 @@ md-content(layout='column', layout-fill, ng-swipe-left='nextMonth()', ng-swipe-r
     md-list.padded
         md-item
             md-item-content
-                span.fa-fw {{ month.h || 0 }}
-                | {{ "Hours" | translate:lang }}
+                p
+                    span.fa-fw {{ month.h || 0 }}
+                    | {{ "Hours" | translate:lang }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.p || 0 }}
-                | {{ "Hours (planned)" | translate:lang }}
+                p
+                    span.fa-fw {{ month.p || 0 }}
+                    | {{ "Hours (planned)" | translate:lang }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.m || 0 }}
-                | {{ "Magazines" | translate:lang }}
+                p
+                    span.fa-fw {{ month.m || 0 }}
+                    | {{ "Magazines" | translate:lang }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.t }}
-                | {{ "Tracts & brochures" | translate:language.translator.current }}
+                p
+                    span.fa-fw {{ month.t }}
+                    | {{ "Tracts & brochures" | translate:language.translator.current }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.b || 0 }}
-                | {{ "Books" | translate:language.translator.current }}
+                p
+                    span.fa-fw {{ month.b || 0 }}
+                    | {{ "Books" | translate:language.translator.current }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.r || 0 }}
-                | {{ "Return visits" | translate:language.translator.current }}
+                p
+                    span.fa-fw {{ month.r || 0 }}
+                    | {{ "Return visits" | translate:language.translator.current }}
             md-divider
         md-item
             md-item-content
-                span.fa-fw {{ month.s || 0 }}
-                | {{ "Bible studies" | translate:language.translator.current }}
+                p
+                    span.fa-fw {{ month.s || 0 }}
+                    | {{ "Bible studies" | translate:language.translator.current }}

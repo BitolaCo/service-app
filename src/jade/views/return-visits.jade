@@ -1,28 +1,41 @@
-md-content(layout='row', layout-fill, flex=100)
-    md-sidenav.md-sidenav-right.md-whiteframe-z1(md-component-id="right")
-        md-content
-            md-subheader.md-primary {{ "Return visits" | translate:language.translator.current }}
-            md-list.padded
-                md-item
-                    md-item-content
-                        p Name goes here
-    md-content(flex, layout='column', layout-fill)
-        md-subheader.md-primary {{ "Return visits" | translate:language.translator.current }}
-        md-button.md-primary.md-fab(ng-click='adding = ! adding', style='position: fixed; right: 1em; bottom: 1em;', aria-label='Add/back')
-            i.fa.fa-plus.fa-2x(ng-hide='adding')
-            i.fa.fa-caret-left.fa-2x(ng-show='adding')
-        md-content(ng-hide='adding')
-            md-list.padded
-                md-item
-                    md-item-content
-                        p {{ "Coming soon!" | translate:language.translator.current }}
-        md-content(ng-show='adding || editing', layout='column', layout-fill, layout-padding, layout-margin)
+md-content(layout='column', layout-fill)
+    md-toolbar.nav-submenu
+        .md-toolbar-tools(layout='row', layout-fill)
             md-input-container(flex)
-                label {{ "Name" | translate:language.translator.current }}
-                input(ng-model='person.name')
-            md-input-container(flex)
-                label {{ "Address" | translate:language.translator.current }}
-                textarea(auto-grow, ng-model='person.address')
-            md-input-container(flex)
-                label {{ "Notes" | translate:language.translator.current }}
-                textarea(auto-grow, ng-model='person.notes')
+                label {{ "Search" | translate:language.translator.current }}
+                input(ng-model='query')
+            md-button(ng-click='create()', aria-label='Add/back')
+                span {{ "Add New" | translate:language.translator.current }} &nbsp;
+                i.fa.fa-caret-right
+    md-subheader.md-primary {{ "Return visits" | translate:language.translator.current }}
+    md-content(ng-hide='editing')
+        md-list.padded
+            md-item(ng-repeat='p in people | filter:query track by $index', ng-click='edit($index)')
+                md-item-content
+                    .md-tile-left
+                        i.fa.fa-fw.fa-2x(ng-class='{"fa-male": p.gender == "male", "fa-female": p.gender == "female", "fa-user": p.gender != "female" && p.gender != "male" }')
+                    .md-tile-content
+                        h3 {{ p.name || "No Name" | translate:language.translator.current }}
+                        p {{ p.address }}
+                md-divider
+    md-content(ng-show='editing', layout='column', layout-fill, layout-padding, layout-margin)
+        p {{ "Gender" | translate:language.translator.current }}
+            md-radio-group.md-primary(ng-model='person.gender')
+                md-radio-button(value='male')
+                    i.fa.fa-fw.fa-male
+                    span {{ "Male" | translate:language.translator.current }}
+                md-radio-button(value='female')
+                    i.fa.fa-fw.fa-female
+                    span {{ "Female" | translate:language.translator.current }}
+        md-input-container
+            label {{ "Name" | translate:language.translator.current }}
+            input(ng-model='person.name')
+        md-input-container
+            label {{ "Address" | translate:language.translator.current }}
+            textarea(auto-grow, ng-model='person.address')
+        md-input-container
+            label {{ "Notes" | translate:language.translator.current }}
+            textarea(auto-grow, ng-model='person.notes')
+        div(layout='row', layout-fill, layout-padding, layout-margin)
+            md-button.md-raised(flex, ng-click='editing = false') {{ "Back" | translate:language.translator.current }}
+            md-button.md-primary.md-raised(flex, ng-click='save()') {{ "Save" | translate:language.translator.current }}
