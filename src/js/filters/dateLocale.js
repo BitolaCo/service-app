@@ -1,11 +1,14 @@
 "use strict";
 
-angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$filter", "$log", function($rootScope, $locale, $filter) {
+angular.module("ministryApp").filter("dateLocale", ["$filter", function($filter) {
 
-    return function (d, format) {
-        if($rootScope.language === "mk") {
+    return function (d, format, locale) {
 
-            var months = ["Јануари", "Фебруару", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"],
+        locale = locale || false;
+
+        if (locale === "mk") {
+
+            var months = ["Јануари", "Фебруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"],
                 days = ["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота"],
                 shortDays = ["Нед", "Пон", "Втр", "Срд", "Чет", "Пет", "Саб"];
 
@@ -21,9 +24,10 @@ angular.module("ministryApp").filter("dateLocale", ["$rootScope", "$locale", "$f
                 return days[d.getDay()] + " " + d.getDate() + " " + months[d.getMonth()] + ", " + d.getFullYear();
             }
 
-        } else {
-            return $filter("date")(d, format);
         }
+
+        return $filter("date")(d, format);
+
     };
 
 }]);

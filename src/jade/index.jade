@@ -13,38 +13,38 @@ html.no-js(lang='{{ language.current }}', ng-app='ministryApp', ng-csp, ng-cloak
             md-sidenav.md-sidenav-left.md-whiteframe-z1(md-component-id='left', md-is-locked-open="$media('gt-sm')")
                 md-toolbar
                     .md-toolbar-tools
-                        h3(flex) {{ "Navigation" | translate:language.translator.current }}
+                        h3.no-break(flex) {{ "Navigation" | translate:language.translator.current }}
                         md-button.icon(hide-gt-md, ng-click='closeNav()', aria-label='Close nav')
                             span.fa.fa-times
                 md-content
                     md-list
                         md-item.link.padded
                             md-item-content
-                                a(href='#/calendar')
+                                a.no-break(ng-link='/calendar')
                                     i.fa.fa-fw.fa-calendar
                                     | {{ "Calendar" | translate:language.translator.current }}
                             md-divider
                         md-item.link.padded
                             md-item-content
-                                a(href='#/report')
+                                a.no-break(ng-link='/report')
                                     i.fa.fa-fw.fa-calculator
                                     | {{ "Report" | translate:language.translator.current }}
                             md-divider
                         md-item.link.padded
                             md-item-content
-                                a(href='#/return-visits')
+                                a.no-break(ng-link='/return-visits')
                                     i.fa.fa-fw.fa-users
                                     | {{ "Return visits" | translate:language.translator.current }}
                             md-divider
                         md-item.link.padded
                             md-item-content
-                                a(href="#/settings")
+                                a.no-break(ng-link='/settings')
                                     i.fa.fa-fw.fa-cogs
                                     | {{ "Settings" | translate:language.translator.current }}
                             md-divider
                         md-item.link.padded
                             md-item-content
-                                a(href='https://github.com/BitolaCo/service-app/issues')
+                                a.no-break(href='https://github.com/BitolaCo/service-app/issues')
                                     i.fa.fa-fw.fa-question
                                     | {{ "Help" | translate:language.translator.current }}
                             md-divider
@@ -54,11 +54,9 @@ html.no-js(lang='{{ language.current }}', ng-app='ministryApp', ng-csp, ng-cloak
                         .md-toolbar-tools
                             md-button.icon(ng-click='toggleNav()', hide-gt-sm, aria-label='Toggle side nav')
                                 i.fa.fa-bars
-                            h3.text-center(flex, hide-gt-sm, aria-label='Service App') {{ "Service App" | translate:language.translator.current }}
-                            h3.text-left.app-title(flex, hide-sm, aria-label='Service App')
+                            h3.no-break.text-center(flex, hide-gt-sm, aria-label='Service App') {{ "Service App" | translate:language.translator.current }}
+                            h3.no-break.text-left.app-title(flex, hide-sm, aria-label='Service App')
                                 img(src='/img/logo.svg', alt='{{ "Service App" | translate:language.translator.current }}')
                                 span {{ "Service App" | translate:language.translator.current }}
-                            md-button(ng-click='go("/calendar")', aria-label='Calendar')
-                                i.fa.fa-calendar
                     md-content(ng-view, layout='column', layout-fill, flex)
         script(src='js/app.js')

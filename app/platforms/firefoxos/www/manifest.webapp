@@ -26,5 +26,5 @@
     "installs_allowed_from": [
         "*"
     ],
-    "version": "0.1.7"
+    "version": "0.1.8"
 }

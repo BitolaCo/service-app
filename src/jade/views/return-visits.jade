@@ -10,15 +10,19 @@ md-content(layout='column', layout-fill)
     md-subheader.md-primary {{ "Return visits" | translate:language.translator.current }}
     md-content(ng-hide='editing')
         md-list.padded
+            md-item(ng-hide='people.length')
+                md-item-content
+                    p.text-center {{ "Nothing here" | translate:language.translator.current }}
+                md-divider
             md-item(ng-repeat='p in people | filter:query track by $index', ng-click='edit($index)')
                 md-item-content
                     .md-tile-left
                         i.fa.fa-fw.fa-2x(ng-class='{"fa-male": p.gender == "male", "fa-female": p.gender == "female", "fa-user": p.gender != "female" && p.gender != "male" }')
                     .md-tile-content
-                        h3 {{ p.name || "No Name" | translate:language.translator.current }}
+                        h3 {{ p.name | translate:language.translator.current }}
                         p {{ p.address }}
                 md-divider
-    md-content(ng-show='editing', layout='column', layout-fill, layout-padding, layout-margin)
+    md-content(ng-show='editing')
         p {{ "Gender" | translate:language.translator.current }}
             md-radio-group.md-primary(ng-model='person.gender')
                 md-radio-button(value='male')

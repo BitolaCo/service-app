@@ -1,7 +1,7 @@
 {
   "Hours": "Сати",
   "Hours (planned)": "Сати (планирани)",
-  "Tracts & brochures": "Трактати",
+  "Tracts & Brochures": "Трактати",
   "Magazines": "Списанија",
   "Return visits": "Повторни постеи",
   "Books": "Книги",
@@ -27,6 +27,7 @@
   "Languages": "Јазици",
   "Name": "Име",
   "Address": "Адреса",
+  "Color": "Боја",
   "Theme": "Боја",
   "red": "Црвена",
   "pink": "Розова",
@@ -48,5 +49,11 @@
   "grey": "Сива",
   "blue-grey": "Сино-сива",
   "Help": "Помош",
-  "Settings": "Оптции"
+  "Settings": "Оптции",
+  "Nothing here": "Ништо овде",
+  "No name": "Нема име",
+  "Male": "Машко",
+  "Female": "Женска",
+  "Back": "Назад",
+  "Save": "Зачувај"
 }

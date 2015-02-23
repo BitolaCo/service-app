@@ -147,7 +147,7 @@ gulp.task("js:all", function() {
 
     return gulp.src(SRC)
         .pipe(concat("app.js"))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest(DEST));
 
 });
