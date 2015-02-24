@@ -12,11 +12,7 @@ rm platforms/firefoxos/www/favicon.ico
 rm platforms/firefoxos/www/js/index.js
 rm platforms/firefoxos/www/css/index.css
 rm platforms/firefoxos/www/apple-touch-icon-precomposed.png
-rm platforms/firefoxos/www/fonts/font-awesome/*.svg
-rm platforms/firefoxos/www/fonts/font-awesome/*.eot
-rm platforms/firefoxos/www/fonts/font-awesome/*.ttf
-rm platforms/firefoxos/www/fonts/font-awesome/*.otf
-rm platforms/firefoxos/www/fonts/roboto/Roboto-*Italic*.ttf
+rm -Rf platforms/firefoxos/www/fonts/*
 
 # Go there now and zip to home.
 cd platforms/firefoxos/www

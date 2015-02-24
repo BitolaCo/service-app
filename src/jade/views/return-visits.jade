@@ -16,8 +16,6 @@ md-content(layout='column', layout-fill)
                 md-divider
             md-item(ng-repeat='p in people | filter:query track by $index', ng-click='edit($index)')
                 md-item-content
-                    .md-tile-left
-                        i.fa.fa-fw.fa-2x(ng-class='{"fa-male": p.gender == "male", "fa-female": p.gender == "female", "fa-user": p.gender != "female" && p.gender != "male" }')
                     .md-tile-content
                         h3 {{ p.name | translate:language.translator.current }}
                         p {{ p.address }}
@@ -26,10 +24,8 @@ md-content(layout='column', layout-fill)
         p {{ "Gender" | translate:language.translator.current }}
             md-radio-group.md-primary(ng-model='person.gender')
                 md-radio-button(value='male')
-                    i.fa.fa-fw.fa-male
                     span {{ "Male" | translate:language.translator.current }}
                 md-radio-button(value='female')
-                    i.fa.fa-fw.fa-female
                     span {{ "Female" | translate:language.translator.current }}
         md-input-container
             label {{ "Name" | translate:language.translator.current }}
