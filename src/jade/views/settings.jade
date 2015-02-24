@@ -1,24 +1,62 @@
 md-content(layout='column', layout-fill, ng-swipe-left='nextMonth()', ng-swipe-right='prevMonth()')
-    md-subheader.md-primary {{ "Theme" | translate:language.translator.current }}
+    md-subheader.md-primary {{ "Settings" | translate:language.translator.current }}
     md-list.padded
         md-item
             md-item-content(layout='row', layout-fill)
-                div.no-break(flex-sm=50, flex-gt-sm=25)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
                     i.fa.fa-fw.fa-paint-brush
                     span {{ "Color" | translate:language.translator.current }}
                 md-select(flex, ng-model="color", placeholder="Select a color")
                     md-option(ng-value="c", ng-repeat="c in colors") {{ c | translate:language.translator.current }}
+            md-divider
         md-item(ng-hide='1')
             md-item-content(layout='row', layout-fill)
-                div.no-break(flex-sm=50, flex-gt-sm=25)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
                     i.fa.fa-fw.fa-paint-brush
                     span {{ "Secondary color" | translate:language.translator.current }}
                 md-select(flex, ng-model="accent", placeholder="Select a color")
                     md-option(ng-value="c", ng-repeat="c in colors") {{ c | translate:language.translator.current }}
+            md-divider
         md-item
             md-item-content(layout='row', layout-fill)
-                div.no-break(flex-sm=50, flex-gt-sm=25)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
                     i.fa.fa-fw.fa-language
                     span {{ "Language" | translate:language.translator.current }}
                 md-select(flex, ng-model="lang", placeholder="Language")
                     md-option(ng-value="l.code", ng-repeat="l in language.languages") {{ l.title | translate:language.translator.current }}
+            md-divider
+        md-item
+            md-item-content(layout='row', layout-fill)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-code-fork
+                    span {{ "Version" | translate:language.translator.current }}
+                p 0.1.8
+            md-divider
+        md-item
+            md-item-content(layout='row', layout-fill)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-paper-plane
+                    span {{ "Contact" | translate:language.translator.current }}
+                a(href='mailto:inbox@bitola.co') inbox@bitola.co
+            md-divider
+        md-item
+            md-item-content(layout='row', layout-fill)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-bug
+                    span {{ "Feedback" | translate:language.translator.current }}
+                a(href='https://github.com/BitolaCo/service-app/issues') {{ "Click here" | translate:language.translator.current }}
+            md-divider
+        md-item
+            md-item-content(layout='row', layout-fill)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-book
+                    span {{ "Help" | translate:language.translator.current }}
+                a(href='https://github.com/BitolaCo/service-app/wiki') {{ "Click here" | translate:language.translator.current }}
+            md-divider
+        md-item
+            md-item-content(layout='row', layout-fill)
+                p.no-break(flex-sm=50, flex-gt-sm=25)
+                    i.fa.fa-fw.fa-copyright
+                    span {{ "License" | translate:language.translator.current }}
+                a(href='https://www.mozilla.org/MPL/') MPL 2.0
+            md-divider

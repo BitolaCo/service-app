@@ -15,6 +15,8 @@ rm platforms/firefoxos/www/apple-touch-icon-precomposed.png
 rm platforms/firefoxos/www/fonts/font-awesome/*.svg
 rm platforms/firefoxos/www/fonts/font-awesome/*.eot
 rm platforms/firefoxos/www/fonts/font-awesome/*.ttf
+rm platforms/firefoxos/www/fonts/font-awesome/*.otf
+rm platforms/firefoxos/www/fonts/roboto/Roboto-*Italic*.ttf
 
 # Go there now and zip to home.
 cd platforms/firefoxos/www

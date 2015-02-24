@@ -1,9 +1,9 @@
 section.ng-calendar(layout='column', layout-fill, flex)
     md-toolbar(md-swipe-right='prev()', md-swipe-left='next()')
         .md-toolbar-tools(layout='column')
-            md-button(ng-click='prev()') &laquo;
+            md-button(ng-click='prev()', aria-label='Previous') &laquo;
             h2.text-center(flex) {{ calendar.start | dateLocale:'MMMM yyyy':language.translator.language }}
-            md-button(ng-click='next()') &raquo;
+            md-button(ng-click='next()', aria-label='Next') &raquo;
     md-subheader.md-primary.no-side-padding
         .md-subheader-content(layout='row', layout-fill)
             .ng-calendar-subhead-day(flex, ng-repeat='day in calendar.weeks[0]')

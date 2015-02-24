@@ -41,5 +41,5 @@ md-content(layout='column', layout-fill)
             label {{ "Notes" | translate:language.translator.current }}
             textarea(auto-grow, ng-model='person.notes')
         div(layout='row', layout-fill, layout-padding, layout-margin)
-            md-button.md-raised(flex, ng-click='editing = false') {{ "Back" | translate:language.translator.current }}
-            md-button.md-primary.md-raised(flex, ng-click='save()') {{ "Save" | translate:language.translator.current }}
+            md-button.md-raised(flex, ng-click='editing = false', aria-label='Back') {{ "Back" | translate:language.translator.current }}
+            md-button.md-primary.md-raised(flex, ng-click='save()', aria-label='Save') {{ "Save" | translate:language.translator.current }}
